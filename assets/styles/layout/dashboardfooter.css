@@ -1,0 +1,24 @@
+.footer-dashboard {
+    width: 100%;
+}
+
+.footer-dashboard__nav {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    width: 100%;
+}
+
+.footer-nav__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-nav__icon {
+    width: 30px;
+}
+
+.footer-nav__label {
+
+}

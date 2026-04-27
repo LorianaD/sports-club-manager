@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
+{% block header %}
+    <header class="header">
+        <div>
+            <div>
+                <span>
+                    Bonjour,
+                </span>
+                <h2>
+                    NOM
+                </h2>
+            </div>
+            <div>
+                <div>
+                    IN
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                SB
+            </div>
+            <div>
+                <span>
+                    Stade Bordelais Football
+                </span>
+            </div>
+        </div>
+    </header>
+{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/loria/Desktop/projets/09-SPORTS_CLUB_MANAGER/projet_sports_club_manager/src/Controller/DashboardController.php</code></li>
-        <li>Your template at <code>C:/Users/loria/Desktop/projets/09-SPORTS_CLUB_MANAGER/projet_sports_club_manager/templates/dashboard/index.html.twig</code></li>
-    </ul>
-</div>
+    
+{% endblock %}
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
 {% endblock %}
