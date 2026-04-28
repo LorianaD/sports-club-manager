@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PlayerController!{% endblock %}
+
+{% block header %}
+    <header class="header dashboard-header">
+
+        <a href="{{ path('player_index') }}">
+            X
+        </a>
+
+        <h2 class="dashboard-header_title">
+            Nouveau joueur
+        </h2>
+        <a class="dashboard-header_add" href="{{ path('player_new') }}">
+            
+        </a>
+    </header>
+{% endblock %}
+{% block body %}
+    <main class="player-create">
+        {{ form_start(newPlayerForm, { attr: { class: 'player-create_form' } }) }}
+            
+            <div class="player-create_card">
+            
+                <section class="player-create_section">
+
+                    <div class="player-create_section-header">
+                        <div class="dot-decoratif"></div>
+                        <h3 class="player-create_section-title">
+                            Identité
+                        </h3>                
+                    </div>
+
+                    <div class="player-create_row">
+
+                        <div class="form-body_group">
+                            {{ form_label(newPlayerForm.lastname, 'Nom', { label_attr: { class: 'form-body_label' } }) }}
+                            {{ form_widget(newPlayerForm.lastname, { attr: { class: 'form-body_input' } }) }}
+                        </div>
+
+                        <div class="form-body_group">
+                            {{ form_label(newPlayerForm.firstname, 'Prénom', { label_attr: { class: 'form-body_label' } }) }}
+                            {{ form_widget(newPlayerForm.firstname, { attr: { class: 'form-body_input' } }) }}
+                        </div>
+
+                    </div>
+
+                    <div class="form-body_group">
+                        {{ form_label(newPlayerForm.birth_date, 'Date de naissance', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(newPlayerForm.birth_date, { attr: { class: 'form-body_input' } }) }}
+                    </div>                
+
+                </section>
+
+                <section class="player-create_section">
+
+                    <div class="player-create_section-header">
+                        <div class="dot-decoratif"></div>
+                        <h3 class="player-create_section-title">
+                            Coordonnées
+                        </h3>                
+                    </div>
+
+                    <div class="form-body_group">
+                        {{ form_label(newPlayerForm.phone_number, 'Numéro de téléphone', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(newPlayerForm.phone_number, { attr: { class: 'form-body_input' } }) }}
+                    </div>            
+
+                    <div class="form-body_group">
+                        {{ form_label(newPlayerForm.email, 'Email', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(newPlayerForm.email, { attr: { class: 'form-body_input' } }) }}
+                    </div>
+
+                    <div class="form-body_group">
+                        {{ form_label(newPlayerForm.address, 'Adresse', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(newPlayerForm.address, { attr: { class: 'form-body_input' } }) }}
+                    </div>
+
+                    <div class="form-body__address">
+
+                        <div class="form-body_group">
+                            {{ form_label(newPlayerForm.pc, 'Code postale', { label_attr: { class: 'form-body_label' } }) }}
+                            {{ form_widget(newPlayerForm.pc, { attr: { class: 'form-body_input' } }) }}
+                        </div>
+
+                        <div class="form-body_group">
+                            {{ form_label(newPlayerForm.city, 'Ville', { label_attr: { class: 'form-body_label' } }) }}
+                            {{ form_widget(newPlayerForm.city, { attr: { class: 'form-body_input' } }) }}
+                        </div>
+
+                    </div>
+                </section>
+
+                <div class="form-body_group">
+                    {{ form_label(newPlayerForm.license_number, 'Numéro de license', { label_attr: { class: 'form-body_label' } }) }}
+                    {{ form_widget(newPlayerForm.license_number, { attr: { class: 'form-body_input' } }) }}
+                </div>
+
+                <div class="form-body_group">
+                    {{ form_label(newPlayerForm.number, 'Numéro de maillot', { label_attr: { class: 'form-body_label' } }) }}
+                    {{ form_widget(newPlayerForm.number, { attr: { class: 'form-body_input' } }) }}
+                </div> 
+
+                <div class="player-create_actions">
+                    <button class="btn btn-principal">Créer le compte</button>
+                </div>
+                
+            </div>
+
+        {{ form_end(newPlayerForm) }}
+        
+    </main>
+{% endblock %}
