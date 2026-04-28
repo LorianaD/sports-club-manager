@@ -2,3 +2,44 @@
     background-color: #C0192A;
     width: 100%;
 }
+
+.login-header_logo {
+    width: 64px;
+    height: 72px;
+}
+
+.login-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 24px 36px;
+    text-align: center;
+    gap: 10px;
+}
+
+.login-header_title {
+    color: #FFF;
+}
+
+.login-header_description {
+    color: #E8A020;
+    text-transform: uppercase;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.dashboard-header_title {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.dashboard-header_add {
+    color: #E8A020;
+    font-size: 26px;
+}

@@ -4,3 +4,10 @@
 /* LAYOUT */
 @import "./layout/header.css";
 @import "./layout/dashboardfooter.css";
+@import "./layout/main.css";
+@import "./layout/auth.css";
+
+/* UI */
+@import "./ui/buttons.css";
+@import "./ui/badges.css";
+@import "./ui/form.css";

@@ -2,49 +2,51 @@
 {% block footer %}
     <footer class="footer-dashboard">
         <nav class="footer-dashboard__nav">
-            <div class="footer-nav__item">
+        
+            <a class="footer-nav__item" href="{{path("user_dashboard")}}">
                 <div class="footer-nav__icon">
                     <img src="{{asset('images/icons/home.png')}}" />
                 </div>
                 <span class="footer-nav__label">
                     Accueil
                 </span>
-            </div>
-            <div class="footer-nav__item">
+            </a>
+
+            <a class="footer-nav__item" href="{{ path("player_index") }}">
                 <div class="footer-nav__icon">
                     <img src="{{asset('images/icons/player.png')}}" />
                 </div>  
                 <span class="footer-nav__label">
                     Joueurs
                 </span>          
-            </div>
+            </a>
 
-            <div class="footer-nav__item">
+            <a class="footer-nav__item">
                 <div class="footer-nav__icon">
                     <img src="{{asset('images/icons/schedule.png')}}" />
                 </div>  
                 <span class="footer-nav__label">
                     Planning
                 </span>
-            </div>
+            </a>
 
-            <div class="footer-nav__item">
+            <a class="footer-nav__item">
                 <div class="footer-nav__icon">
                     <img src="{{asset('images/icons/equipment.png')}}" />
                 </div>
                 <span class="footer-nav__label">
                     Matériel
                 </span>
-            </div>
+            </a>
 
-            <div class="footer-nav__item">
+            <a class="footer-nav__item">
                 <div class="footer-nav__icon">
                     <img src="{{asset('images/icons/setting.png')}}" />
                 </div>
                 <span class="footer-nav__label">
                     Plus
                 </span>
-            </div>
+            </a>
 
         </nav>
     </footer>

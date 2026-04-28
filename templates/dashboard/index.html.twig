@@ -6,19 +6,25 @@
     <header class="header">
         <div>
             <div>
-                <span>
-                    Bonjour,
-                </span>
-                <h2>
-                    NOM
-                </h2>
-            </div>
-            <div>
                 <div>
-                    IN
+                    <span>
+                        Bonjour,
+                    </span>
+                    <h2>
+                        NOM
+                    </h2>
+                </div>
+                <div>
+                    <div>
+                        IN
+                    </div>
                 </div>
             </div>
+            <div>
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            </div>
         </div>
+
         <div>
             <div>
                 SB
@@ -29,6 +35,7 @@
                 </span>
             </div>
         </div>
+
     </header>
 {% endblock %}
 {% block body %}

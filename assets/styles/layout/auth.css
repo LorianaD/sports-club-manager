@@ -1,0 +1,31 @@
+/* Mobile par défaut */
+.auth-page {
+    min-height: 100vh;
+    background: #ffffff;
+}
+
+.auth-card {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+}
+
+/* Desktop / tablette */
+@media screen and (min-width: 768px) {
+    .auth-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 32px;
+        background: #f7f7f7;
+    }
+
+    .auth-card {
+        max-width: 430px;
+        min-height: auto;
+        border-radius: 32px;
+        overflow: hidden;
+        border: 2px solid #d0d0d0;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    }
+}

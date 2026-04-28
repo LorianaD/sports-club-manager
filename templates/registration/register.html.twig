@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block header %}
+    <body class="auth-page">
+        <div class="auth-card">
+            <header class="header login-header">
+                <div class="login-header_logo">
+                    <img src="{{ asset('images/others/q.svg') }}" alt="">
+                </div>
+                <div class="login-header_text">
+                    <h1 class="login-header_title">
+                        Stade Bordelais
+                    </h1>
+                    <span class="login-header_description">
+                        Football · Espace Coach
+                    </span>
+                </div>    
+            </header>
+{% endblock %}
+
+{% block body %}
+
+            {{ form_start(registrationForm, { attr: { class: 'form' } }) }}
+
+                <div class="form-header">
+                    <h3 class="form-header_title">Créer un compte</h3>
+                    <span class="form-header_description">Ajout d’un membre du staff</span>
+                </div>
+
+                <div class="form-body">
+
+                    <div class="form-body_group">
+                        {{ form_label(registrationForm.lastname, 'Nom', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(registrationForm.lastname, { attr: { class: 'form-body_input' } }) }}
+                    </div>
+
+                    <div class="form-body_group">
+                        {{ form_label(registrationForm.firstname, 'Prénom', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(registrationForm.firstname, { attr: { class: 'form-body_input' } }) }}
+                    </div>
+
+                    <div class="form-body_group">
+                        {{ form_label(registrationForm.phone, 'Téléphone', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(registrationForm.phone, { attr: { class: 'form-body_input' } }) }}
+                    </div>
+
+                    <div class="form-body_group">
+                        {{ form_label(registrationForm.email, 'Email', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(registrationForm.email, { attr: { class: 'form-body_input' } }) }}
+                    </div>
+
+                    <div class="form-body_group">
+                        {{ form_label(registrationForm.plainPassword, 'Mot de passe', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(registrationForm.plainPassword, { attr: { class: 'form-body_input' } }) }}
+                    </div>
+
+                    <div class="form-body_group">
+                        {{ form_row(registrationForm.agreeTerms) }}
+                    </div>
+
+                </div>
+
+                <button class="btn btn-principal">Créer le compte</button>
+
+            {{ form_end(registrationForm) }}
+
+        </div>
+    </body>
+
+{% endblock %}

@@ -1,3 +1,15 @@
+.btn {
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
 .btn-principal {
     background-color: #C0192A ;
+    color: #FFFFFF;
 }
