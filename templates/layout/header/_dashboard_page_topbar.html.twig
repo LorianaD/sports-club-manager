@@ -1,0 +1,17 @@
+<header class="dashboard-topbar">
+
+    <div class="dashboard-topbar_left">
+        {% if backPath is defined %}
+            <a href="{{ path(backPath) }}" class="dashboard-topbar_backPath">←</a>
+        {% endif %}
+
+        <h2 class="dashboard-topbar_title">{{ title }}</h2>
+    </div>
+
+
+    {% if actionPath is defined %}
+        <a href="{{ actionPath }}" class="dashboard-topbar_cta">
+            {{ actionLabel|default('+')|raw }}
+        </a>
+    {% endif %}
+</header>

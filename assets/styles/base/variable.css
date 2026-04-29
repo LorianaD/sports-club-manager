@@ -1,0 +1,36 @@
+:root {
+    /* Couleurs club */
+    --sb-red:          #C0192A;
+    --sb-red-dark:     #8B1020;
+    --sb-red-light:    #F5E6E8;
+    --sb-yellow:       #E8A020;
+    --sb-yellow-dark:  #B87A10;
+    --sb-yellow-light: #FDF3E0;
+
+    /* Neutres */
+    --sb-dark:         #1A1A1A;
+    --sb-anthracite:   #2D2D2D;
+    --sb-gray:         #6B6B6B;
+    --sb-gray-light:   #ABABAB;
+    --sb-border:       #E0E0E0;
+    --sb-bg:           #F5F5F5;
+    --sb-white:        #FFFFFF;
+
+    /* Feedback */
+    --sb-success:      #1A6B35;
+    --sb-success-bg:   #EAF4EE;
+
+    /* Typographie */
+    --sb-font:         system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    /* Espacements */
+    --sb-radius-sm:    6px;
+    --sb-radius-md:    10px;
+    --sb-radius-lg:    14px;
+    --sb-radius-xl:    20px;
+
+    /* Ombres */
+    --sb-shadow-sm:    0 1px 4px rgba(0, 0, 0, 0.06);
+    --sb-shadow-md:    0 4px 16px rgba(0, 0, 0, 0.08);
+    --sb-focus-ring:   0 0 0 3px rgba(192, 25, 42, 0.12);
+}

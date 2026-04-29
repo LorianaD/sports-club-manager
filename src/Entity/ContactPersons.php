@@ -2,14 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PlayerRepository;
+use App\Repository\ContactPersonsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PlayerRepository::class)]
-class Player
+#[ORM\Entity(repositoryClass: ContactPersonsRepository::class)]
+class ContactPersons
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,37 +21,25 @@ class Player
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;
 
-    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
-    private ?\DateTimeImmutable $birth_date = null;
-
-    #[ORM\Column(length: 5, nullable: true)]
-    private ?string $number = null;    
-
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $address = null;
 
-    #[ORM\Column(length: 6, nullable: true)]
+    #[ORM\Column(length: 6)]
     private ?string $pc = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $city = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $phone_number = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $email = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $license_number = null;
-
-    #[ORM\Column(length: 500, nullable: true)]
-    private ?string $photo = null;
 
     /**
      * @var Collection<int, PlayerContact>
      */
-    #[ORM\OneToMany(targetEntity: PlayerContact::class, mappedBy: 'player')]
+    #[ORM\OneToMany(targetEntity: PlayerContact::class, mappedBy: 'contactPerson')]
     private Collection $playerContacts;
 
     public function __construct()
@@ -89,29 +76,6 @@ class Player
         return $this;
     }
 
-    public function getBirthDate(): ?\DateTimeImmutable
-    {
-        return $this->birth_date;
-    }
-
-    public function setBirthDate(\DateTimeImmutable $birth_date): static
-    {
-        $this->birth_date = $birth_date;
-
-        return $this;
-    }
-
-    public function getAge()
-    {
-        if (!$this->birth_date) {
-            return null;
-        }
-
-        $today = new \DateTime();
-        
-        return $this->birth_date->diff($today)->y;
-    }
-
     public function getAddress(): ?string
     {
         return $this->address;
@@ -129,7 +93,7 @@ class Player
         return $this->pc;
     }
 
-    public function setPc(?string $pc): static
+    public function setPc(string $pc): static
     {
         $this->pc = $pc;
 
@@ -141,7 +105,7 @@ class Player
         return $this->city;
     }
 
-    public function setCity(?string $city): static
+    public function setCity(string $city): static
     {
         $this->city = $city;
 
@@ -153,7 +117,7 @@ class Player
         return $this->phone_number;
     }
 
-    public function setPhoneNumber(?string $phone_number): static
+    public function setPhoneNumber(string $phone_number): static
     {
         $this->phone_number = $phone_number;
 
@@ -165,45 +129,9 @@ class Player
         return $this->email;
     }
 
-    public function setEmail(?string $email): static
+    public function setEmail(string $email): static
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getNumber(): ?string
-    {
-        return $this->number;
-    }
-
-    public function setNumber(?string $number): static
-    {
-        $this->number = $number;
-
-        return $this;
-    }
-
-    public function getLicenseNumber(): ?string
-    {
-        return $this->license_number;
-    }
-
-    public function setLicenseNumber(?string $license_number): static
-    {
-        $this->license_number = $license_number;
-
-        return $this;
-    }
-
-    public function getPhoto(): ?string
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(?string $photo): static
-    {
-        $this->photo = $photo;
 
         return $this;
     }
@@ -220,7 +148,7 @@ class Player
     {
         if (!$this->playerContacts->contains($playerContact)) {
             $this->playerContacts->add($playerContact);
-            $playerContact->setPlayer($this);
+            $playerContact->setContactPerson($this);
         }
 
         return $this;
@@ -230,8 +158,8 @@ class Player
     {
         if ($this->playerContacts->removeElement($playerContact)) {
             // set the owning side to null (unless already changed)
-            if ($playerContact->getPlayer() === $this) {
-                $playerContact->setPlayer(null);
+            if ($playerContact->getContactPerson() === $this) {
+                $playerContact->setContactPerson(null);
             }
         }
 

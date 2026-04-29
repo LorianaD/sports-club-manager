@@ -3,44 +3,18 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block header %}
-    <header class="header">
-        <div>
-            <div>
-                <div>
-                    <span>
-                        Bonjour,
-                    </span>
-                    <h2>
-                        NOM
-                    </h2>
-                </div>
-                <div>
-                    <div>
-                        IN
-                    </div>
-                </div>
-            </div>
-            <div>
-                <a href="{{ path('app_logout') }}">Déconnexion</a>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                SB
-            </div>
-            <div>
-                <span>
-                    Stade Bordelais Football
-                </span>
-            </div>
-        </div>
-
-    </header>
+    {% include "layout/header/_dashboard_home_header.html.twig" with {
+        coachName: 'Coach Martin',
+        initials: 'CM'
+    } %}
 {% endblock %}
+
 {% block body %}
+    <main class="dashboard-main">
     
+    </main>
 {% endblock %}
+
 {% block footer %}
     {% include "layout/dashboardFooter.html.twig" %}
 {% endblock %}

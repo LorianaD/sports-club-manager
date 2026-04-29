@@ -3,14 +3,10 @@
 {% block title %}Hello PlayerController!{% endblock %}
 
 {% block header %}
-    <header class="header dashboard-header">
-        <h2 class="dashboard-header_title">
-            Joueurs
-        </h2>
-        <a class="dashboard-header_add" href="{{ path('player_new') }}">
-            +
-        </a>
-    </header>
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Joueurs',
+        actionPath: path('player_new')
+    } %}
 {% endblock %}
 
 {% block body %}
@@ -18,7 +14,22 @@
         <div class="">
             {# SEARCH AND FILTRES #}
         </div>
-        <div>
+        <div class="card">
+            
+            {% for player in players %}
+                <a class="card-list__item" href="{{ path('player_show', { 'id' : player.id }) }}">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        <h3 class="card-list__title">{{ player.firstname }} {{ player.lastname }}</h3>
+                        <p class="card-list__description"><span>team</span> · <span>poste</span> · <span>#{{ player.number }}</span></p>
+                    </div>
+                    <div>
+                    
+                    </div>
+                </a>
+            {% endfor %}            
 
         </div>
     </main>

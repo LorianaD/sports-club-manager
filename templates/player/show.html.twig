@@ -1,0 +1,95 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Fiche joueur',
+        backPath: 'player_index',
+        actionPath: path('player_edit', { id: player.id }),
+        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit">'
+    } %}
+{% endblock %}
+{% block body %}
+    <div class="player-profil__header">
+        <div class="player-profil__badge">
+
+            {{ player.firstname|first|upper }}{{ player.lastname|first|upper }}
+        
+        </div>
+
+        <div class="player-profil__essentials">
+            <h3 class="player-profil__title">{{ player.firstname }} {{ player.lastname }}</h3>
+            <p class="player-profil__age">{{ player.age }} ans · né le {{ player.birthDate|date('d/m/Y') }}</p>
+        </div>
+    </div>
+    <main class="dashboard-main">
+        <div class="">
+            <div class="player-profil__details">
+                <div class="player-profil__details-header">
+                    <div class="player-profil__header-deco deco-red"></div>
+                    <h4 class="">Coordonnées</h4>
+                </div>
+                <div class="player-profil__details-list">
+                    <div class="player-profil__details-item">
+                        <span class="player-profil__item-title">
+                            Téléphone
+                        </span>
+                        <span class="player-profil__item-descr">
+                            {{ player.phoneNumber }}
+                        </span>
+                    </div>
+                    <div class="player-profil__details-item">
+                        <span class="player-profil__item-title">
+                            Email
+                        </span>
+                        <span class="player-profil__item-descr">
+                            {{ player.email }}
+                        </span>
+                    </div>
+                    <div class="player-profil__details-item">
+                        <span class="player-profil__item-title">
+                            Adresse
+                        </span>
+                        <div class="player-profil__item-descr">
+                            <span>{{ player.address }}, {{ player.pc }} {{ player.city }}</span>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+            <div class="player-profil__details">
+                <div class="player-profil__details-header">
+                    <div class="player-profil__header-deco deco-yellow"></div>
+                    <h4 class="">Contact</h4>
+                </div>
+                <div class="player-profil__details-list">
+                    {# Contact1 #}
+                    <div class="">
+                        <div>
+                            {# initial #}
+                        </div>
+                        <div>
+                            {# coordonées #}
+                            <h5>Prénom NOM · type de relation</h5>
+                            <span>numero</span>
+                            <span>email</span>
+                        </div>          
+                    </div>
+                    {# Contact2 si existe #}
+                    <div>
+                        <div>
+                            {# initial #}
+                        </div>
+                        <div>
+                            {# coordonées #}
+                            <h5>Prénom NOM · type de relation</h5>
+                            <span>numero</span>
+                            <span>email</span>
+                        </div>          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

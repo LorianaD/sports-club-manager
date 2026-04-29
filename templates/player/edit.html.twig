@@ -6,7 +6,7 @@
 <div class="player-create__wrapper">
     <header class="header dashboard-header">
 
-        <a href="{{ path('player_index') }}">
+        <a href="{{ path('player_show', {'id' : player.id }) }}">
             ✕
         </a>
 
@@ -20,7 +20,7 @@
 {% endblock %}
 {% block body %}
     <main class="player-create">
-        {{ form_start(newPlayerForm, { attr: { class: 'player-create__form' } }) }}
+        {{ form_start(editPlayerForm, { attr: { class: 'player-create__form' } }) }}
             
             <div class="player-create_card">
 
@@ -32,7 +32,7 @@
                     <div class="player-create__photo-info">
                         <p class="player-create__photo-title">Photo du joueur</p>
                         <p class="player-create__photo-hint">JPG, PNG · max 5 Mo</p>
-                        {{ form_widget(newPlayerForm.photo, {
+                        {{ form_widget(editPlayerForm.photo, {
                             attr: { class: 'player-create__input', style: 'display:none', id: 'player_photo' }
                         }) }}
                         <label for="player_photo" class="player-create__photo-btn">
@@ -55,20 +55,20 @@
                     <div class="player-create_row">
 
                         <div class="player-create__field">
-                            {{ form_label(newPlayerForm.lastname, 'Nom', { label_attr: { class: 'form-body_label' } }) }}
-                            {{ form_widget(newPlayerForm.lastname, { attr: { class: 'form-body_input' } }) }}
+                            {{ form_label(editPlayerForm.lastname, 'Nom', { label_attr: { class: 'form-body_label' } }) }}
+                            {{ form_widget(editPlayerForm.lastname, { attr: { class: 'form-body_input' } }) }}
                         </div>
 
                         <div class="player-create__field">
-                            {{ form_label(newPlayerForm.firstname, 'Prénom', { label_attr: { class: 'form-body_label' } }) }}
-                            {{ form_widget(newPlayerForm.firstname, { attr: { class: 'form-body_input' } }) }}
+                            {{ form_label(editPlayerForm.firstname, 'Prénom', { label_attr: { class: 'form-body_label' } }) }}
+                            {{ form_widget(editPlayerForm.firstname, { attr: { class: 'form-body_input' } }) }}
                         </div>
 
                     </div>
 
                     <div class="player-create__field">
-                        {{ form_label(newPlayerForm.birth_date, 'Date de naissance', { label_attr: { class: 'form-body_label' } }) }}
-                        {{ form_widget(newPlayerForm.birth_date, { attr: { class: 'form-body_input' } }) }}
+                        {{ form_label(editPlayerForm.birth_date, 'Date de naissance', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(editPlayerForm.birth_date, { attr: { class: 'form-body_input' } }) }}
                     </div>                
 
                 </section>
@@ -85,43 +85,43 @@
                     </div>
 
                     <div class="player-create__field">
-                        {{ form_label(newPlayerForm.phone_number, 'Numéro de téléphone', { label_attr: { class: 'form-body_label' } }) }}
-                        {{ form_widget(newPlayerForm.phone_number, { attr: { class: 'form-body_input', placeholder: '06 12 34 56 78' } }) }}
+                        {{ form_label(editPlayerForm.phone_number, 'Numéro de téléphone', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(editPlayerForm.phone_number, { attr: { class: 'form-body_input', placeholder: '06 12 34 56 78' } }) }}
                     </div>            
 
                     <div class="player-create__field">
-                        {{ form_label(newPlayerForm.email, 'Email', { label_attr: { class: 'form-body_label' } }) }}
-                        {{ form_widget(newPlayerForm.email, { attr: { class: 'form-body_input' } }) }}
+                        {{ form_label(editPlayerForm.email, 'Email', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(editPlayerForm.email, { attr: { class: 'form-body_input' } }) }}
                     </div>
 
                     <div class="player-create__field">
-                        {{ form_label(newPlayerForm.address, 'Adresse', { label_attr: { class: 'form-body_label' } }) }}
-                        {{ form_widget(newPlayerForm.address, { attr: { class: 'form-body_input' } }) }}
+                        {{ form_label(editPlayerForm.address, 'Adresse', { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(editPlayerForm.address, { attr: { class: 'form-body_input' } }) }}
                     </div>
 
                     <div class="form-body__address">
 
                         <div class="player-create__field">
-                            {{ form_label(newPlayerForm.pc, 'Code postale', { label_attr: { class: 'form-body_label' } }) }}
-                            {{ form_widget(newPlayerForm.pc, { attr: { class: 'form-body_input' } }) }}
+                            {{ form_label(editPlayerForm.pc, 'Code postale', { label_attr: { class: 'form-body_label' } }) }}
+                            {{ form_widget(editPlayerForm.pc, { attr: { class: 'form-body_input' } }) }}
                         </div>
 
                         <div class="player-create__field">
-                            {{ form_label(newPlayerForm.city, 'Ville', { label_attr: { class: 'form-body_label' } }) }}
-                            {{ form_widget(newPlayerForm.city, { attr: { class: 'form-body_input' } }) }}
+                            {{ form_label(editPlayerForm.city, 'Ville', { label_attr: { class: 'form-body_label' } }) }}
+                            {{ form_widget(editPlayerForm.city, { attr: { class: 'form-body_input' } }) }}
                         </div>
 
                     </div>
                 </section>
 
                 <div class="player-create__field">
-                    {{ form_label(newPlayerForm.license_number, 'Numéro de license', { label_attr: { class: 'form-body_label' } }) }}
-                    {{ form_widget(newPlayerForm.license_number, { attr: { class: 'form-body_input' } }) }}
+                    {{ form_label(editPlayerForm.license_number, 'Numéro de license', { label_attr: { class: 'form-body_label' } }) }}
+                    {{ form_widget(editPlayerForm.license_number, { attr: { class: 'form-body_input' } }) }}
                 </div>
 
                 <div class="player-create__field">
-                    {{ form_label(newPlayerForm.number, 'Numéro de maillot', { label_attr: { class: 'form-body_label' } }) }}
-                    {{ form_widget(newPlayerForm.number, { attr: { class: 'form-body_input' } }) }}
+                    {{ form_label(editPlayerForm.number, 'Numéro de maillot', { label_attr: { class: 'form-body_label' } }) }}
+                    {{ form_widget(editPlayerForm.number, { attr: { class: 'form-body_input' } }) }}
                 </div> 
 
                 <div class="player-create_actions">
@@ -130,7 +130,7 @@
                 
             </div>
 
-        {{ form_end(newPlayerForm) }}
+        {{ form_end(editPlayerForm) }}
         
     </main>
 </div>

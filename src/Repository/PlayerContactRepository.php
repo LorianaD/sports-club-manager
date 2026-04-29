@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Player;
+use App\Entity\PlayerContact;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Player>
+ * @extends ServiceEntityRepository<PlayerContact>
  */
-class PlayerRepository extends ServiceEntityRepository
+class PlayerContactRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Player::class);
+        parent::__construct($registry, PlayerContact::class);
     }
 
     //    /**
-    //     * @return Player[] Returns an array of Player objects
+    //     * @return PlayerContact[] Returns an array of PlayerContact objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class PlayerRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Player
+    //    public function findOneBySomeField($value): ?PlayerContact
     //    {
     //        return $this->createQueryBuilder('p')
     //            ->andWhere('p.exampleField = :val')
@@ -40,27 +40,4 @@ class PlayerRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-
-    public function findAllPlayer()
-    {
-        $qb = $this->createQueryBuilder('p')
-            ->select('p')
-            ->getQuery()
-            ->getResult();
-        
-        return $qb;
-    }
-
-    function findPlayerById(int $id)
-    {
-        $qb = $this->createQueryBuilder('p')
-            ->select('p')
-            ->where('p.id = :id')
-            ->setParameter('id', $id)
-            ->getQuery()
-            ->getOneOrNullResult();
-        
-        return $qb;
-    }
-
 }

@@ -1,0 +1,19 @@
+<header class="dashboard-home-header">
+    <div class="dashboard-home-header_top">
+        <div>
+            <p class="dashboard-home-header_greeting">Bonjour,</p>
+            <h1 class="dashboard-home-header_title"> {{ coachName }} </h1>
+        </div>
+
+        <div class="dashboard-home-header_actions">
+            {# <a href="{{ path('notification_index') }}">🔔</a> #}
+            <div class="dashboard-home-header_avatar"> {{ initials }} </div>
+            <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <div class="dashboard-home-header_club">
+        <span class="dashboard-home-header_club-badge">SB</span>
+        <p>Stade Bordelais Football</p>
+    </div>
+</header>

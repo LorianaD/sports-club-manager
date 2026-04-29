@@ -1,9 +1,10 @@
 /* BASE */
 @import "./base/reset.css";
+@import "./base/variable.css";
 
 /* LAYOUT */
 @import "./layout/header.css";
-@import "./layout/dashboardfooter.css";
+@import "./layout/footer.css";
 @import "./layout/main.css";
 @import "./layout/auth.css";
 
@@ -11,3 +12,5 @@
 @import "./ui/buttons.css";
 @import "./ui/badges.css";
 @import "./ui/form.css";
+@import "./ui/cards.css";
+@import "./ui/profil.css";

@@ -25,6 +25,7 @@ class PlayerType extends AbstractType
             ->add('phone_number')
             ->add('email')
             ->add('license_number')
+            // ->add('photo')
             // ->add('Submit', SubmitType::class, [
             //     'label'    => 'Envoyer'
             // ])

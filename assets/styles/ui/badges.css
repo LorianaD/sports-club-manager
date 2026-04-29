@@ -4,3 +4,26 @@
     border-radius: 50%;
     background-color: #E8A020;
 }
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.badge-red {
+    background: var(--sb-red-light);
+    color: var(--sb-red-dark);
+}
+
+.badge-yellow {
+    background: var(--sb-yellow-light);
+    color: var(--sb-yellow-dark);
+}
+
+.badge-ok {
+    background: var(--sb-success-bg);
+    color: var(--sb-success);
+}

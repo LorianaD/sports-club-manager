@@ -26,20 +26,90 @@
     text-transform: uppercase;
 }
 
-.dashboard-header {
+/*******************************************
+**************** DASHBOARD *****************
+*******************************************/
+
+.dashboard-home-header {
+    background-color: var(--sb-red);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dashboard-home-header_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-home-header_greeting {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.dashboard-home-header_title {
+    color: var(--sb-white);
+}
+
+.dashboard-home-header_actions {}
+
+.dashboard-home-header_avatar {
+    background-color: var(--sb-yellow);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.dashboard-home-header_club {
+    background-color: var(--sb-red-dark);
+    border-radius: var(--sb-radius-md);
+    padding: 10px;
+    color: var(--sb-white);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.dashboard-home-header_club-badge {
+    background-color: var(--sb-yellow);
+    padding: 5px;
+    border-radius: var(--sb-radius-sm);
+    color: black;
+}
+
+/* Topbar */
+.dashboard-topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    background: var(--sb-red);
 }
 
-.dashboard-header_title {
-    color: #FFF;
+.dashboard-topbar_left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-topbar_title {
+    color: var(--sb-white);
     font-size: 20px;
     font-weight: 500;
 }
 
-.dashboard-header_add {
-    color: #E8A020;
+.dashboard-topbar_backPath {
+    color: var(--sb-white);
+}
+
+.dashboard-topbar_cta {
+    color: var(--sb-yellow);
     font-size: 26px;
+    width: 30px;
+    height: 30px;
 }
