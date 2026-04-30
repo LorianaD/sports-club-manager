@@ -2,7 +2,7 @@
 
     <div class="dashboard-topbar_left">
         {% if backPath is defined %}
-            <a href="{{ path(backPath) }}" class="dashboard-topbar_backPath">←</a>
+            <a href="{{ backPath }}" class="dashboard-topbar_backPath">{{ img }}</a>
         {% endif %}
 
         <h2 class="dashboard-topbar_title">{{ title }}</h2>
@@ -14,4 +14,5 @@
             {{ actionLabel|default('+')|raw }}
         </a>
     {% endif %}
+    
 </header>

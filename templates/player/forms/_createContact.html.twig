@@ -1,0 +1,72 @@
+
+{{ form_start(newContactForm, { attr: { class: 'player-create__form' } }) }}
+    
+    <div class="player-create_card">
+    
+        <section class="player-create__section">
+
+            <div class="player-create__section-header">
+                <span class="player-create__section-line"></span>
+                <span class="player-create__section-label">
+                    <span class="player-create__section-dot"></span>
+                    Personne à contacter
+                </span>
+                <span class="player-create__section-line"></span>
+            </div>
+
+            <div class="player-create_row">
+
+                <div class="player-create__field">
+                    {{ form_label(newContactForm.lastname, 'Nom', { label_attr: { class: 'form-body_label' } }) }}
+                    {{ form_widget(newContactForm.lastname, { attr: { class: 'form-body_input' } }) }}
+                </div>
+
+                <div class="player-create__field">
+                    {{ form_label(newContactForm.firstname, 'Prénom', { label_attr: { class: 'form-body_label' } }) }}
+                    {{ form_widget(newContactForm.firstname, { attr: { class: 'form-body_input' } }) }}
+                </div>
+
+            </div>
+
+            <div class="player-create__field">
+                {{ form_label(newContactForm.phone_number, 'Numéro de téléphone', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newContactForm.phone_number, { attr: { class: 'form-body_input', placeholder: '06 12 34 56 78' } }) }}
+            </div>            
+
+            <div class="player-create__field">
+                {{ form_label(newContactForm.email, 'Email', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newContactForm.email, { attr: { class: 'form-body_input' } }) }}
+            </div>
+
+            <div class="player-create__field">
+                {{ form_label(newContactForm.address, 'Adresse', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newContactForm.address, { attr: { class: 'form-body_input' } }) }}
+            </div>
+
+            <div class="player-create_row">
+
+                <div class="player-create__field">
+                    {{ form_label(newContactForm.pc, 'Code postale', { label_attr: { class: 'form-body_label' } }) }}
+                    {{ form_widget(newContactForm.pc, { attr: { class: 'form-body_input' } }) }}
+                </div>
+
+                <div class="player-create__field">
+                    {{ form_label(newContactForm.city, 'Ville', { label_attr: { class: 'form-body_label' } }) }}
+                    {{ form_widget(newContactForm.city, { attr: { class: 'form-body_input' } }) }}
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="player-create_actions">
+            <a href="{{ path('player_new') }}?step=1" class="btn btn-secondary">
+                {{ return }}
+            </a>
+            <button class="btn btn-principal">{{ next }}</button>
+        </div>
+        
+    </div>
+
+{{ form_end(newContactForm) }}
+        

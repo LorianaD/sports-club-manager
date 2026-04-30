@@ -51,4 +51,16 @@ class ContactPersonsRepository extends ServiceEntityRepository
         return $qb;
     }
 
+    public function findPersonById(int $id)
+    {
+        $qb = $this->createQueryBuilder(('p'))
+            ->select('p')
+            ->where('p.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+        
+        return $qb;
+    }
+
 }

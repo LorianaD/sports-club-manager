@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\ContactPersons;
 use App\Entity\Player;
+use App\Form\ContactPersonsType;
 use App\Form\PlayerType;
 use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -29,14 +31,21 @@ final class PlayerController extends AbstractController
     public function new(Request $request, EntityManagerInterface $em)
     {
 
+    $step = $request->query->getInt('step', 1);
+
         $newPlayer = new Player;
+        $newContact = new ContactPersons;
 
-        $formPlayer = $this->createForm(PlayerType::class , $newPlayer);
-        $formPlayer->handleRequest($request);
+        $newFormPlayer = $this->createForm(PlayerType::class , $newPlayer);
+        $newFormContact = $this->createForm(ContactPersonsType::class, $newContact);
 
-        if ($formPlayer->isSubmitted() && $formPlayer->isValid()) {
+        $newFormPlayer->handleRequest($request);
+        $newFormContact->handleRequest($request);
 
-            $em ->persist($newPlayer);
+
+        if ($newFormPlayer->isSubmitted() && $newFormPlayer->isValid()) {
+
+            $em->persist($newPlayer);
             $em->flush();
 
             return $this->redirectToRoute('player_index');
@@ -44,7 +53,9 @@ final class PlayerController extends AbstractController
         }
 
         return $this->render('player/new.html.twig',[
-            'newPlayerForm' => $formPlayer,
+            'step' => $step,
+            'newPlayerForm' => $newFormPlayer,
+            'newContactForm' => $newFormContact,
         ]);
 
     }
@@ -64,10 +75,10 @@ final class PlayerController extends AbstractController
     #[Route('/edit/{id}', name: 'player_edit', methods: ['GET', 'POST'])]
     public function edit(Player $player, Request $request, EntityManagerInterface $em)
     {
-        $formPlayer = $this->createForm(PlayerType::class, $player);
-        $formPlayer->handleRequest($request);
+        $newFormPlayer = $this->createForm(PlayerType::class, $player);
+        $newFormPlayer->handleRequest($request);
 
-        if($formPlayer->isSubmitted() && $formPlayer->isValid()) {
+        if($newFormPlayer->isSubmitted() && $newFormPlayer->isValid()) {
             $em->persist($player);
             $em->flush();
 
@@ -77,7 +88,7 @@ final class PlayerController extends AbstractController
         }
 
         return $this->render('player/edit.html.twig', [
-            'editPlayerForm' => $formPlayer,
+            'editPlayerForm' => $newFormPlayer,
             'player' => $player,
         ]);
     }

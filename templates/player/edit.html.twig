@@ -4,7 +4,7 @@
 
 {% block header %}
 <div class="player-create__wrapper">
-    <header class="header dashboard-header">
+    {# <header class="header dashboard-header">
 
         <a href="{{ path('player_show', {'id' : player.id }) }}">
             ✕
@@ -16,7 +16,12 @@
         <a class="dashboard-header_add" href="{{ path('player_new') }}">
             
         </a>
-    </header>
+    </header> #}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Modifier le joeur',
+        backPath: path('player_show', {'id' : player.id }),
+        img: '✕'
+    } %}
 {% endblock %}
 {% block body %}
     <main class="player-create">

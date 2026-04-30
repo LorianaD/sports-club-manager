@@ -2,17 +2,15 @@
 
 namespace App\Form;
 
-use App\Entity\Player;
+use App\Entity\ContactPersons;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class PlayerType extends AbstractType
+class ContactPersonsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -44,22 +42,6 @@ class PlayerType extends AbstractType
                     'maxlength' => 255,
                     'placeholder' => 'ex. Jean'
                 ]
-            ])
-            ->add('birth_date', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('number', IntegerType::class, [
-                'required' => false,
-                'constraints' => [
-                    new Length(
-                        min: 1,
-                        max: 255
-                    )
-                ],
-                'attr' => [
-                    'maxlength' => 255,
-                    'placeholder' => '10'
-                ],
             ])
             ->add('address', TextType::class, [
                 'required' => false,
@@ -101,7 +83,7 @@ class PlayerType extends AbstractType
                 ],
             ])
             ->add('phone_number', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new Length(
                         min: 5,
@@ -114,7 +96,7 @@ class PlayerType extends AbstractType
                 ],
             ])
             ->add('email', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new Length(
                         min: 3,
@@ -126,30 +108,13 @@ class PlayerType extends AbstractType
                     'placeholder' => 'ex. j.dupont@example.com'
                 ],
             ])
-            ->add('license_number', TextType::class, [
-                'required' => false,
-                'constraints' => [
-                    new Length(
-                        min: 2,
-                        max: 255
-                    )
-                ],
-                'attr' => [
-                    'maxlength' => 255,
-                    'placeholder' => 'ex. 11035A20'
-                ],
-            ])
-            // ->add('photo')
-            // ->add('Submit', SubmitType::class, [
-            //     'label'    => 'Envoyer'
-            // ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Player::class,
+            'data_class' => ContactPersons::class,
         ]);
     }
 }

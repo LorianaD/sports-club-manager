@@ -3,7 +3,8 @@
 {% block header %}
     {% include "layout/header/_dashboard_page_topbar.html.twig" with {
         title: 'Fiche joueur',
-        backPath: 'player_index',
+        backPath: path('player_index'),
+        img: '←',
         actionPath: path('player_edit', { id: player.id }),
         actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit">'
     } %}
