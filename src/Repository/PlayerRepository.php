@@ -51,7 +51,7 @@ class PlayerRepository extends ServiceEntityRepository
         return $qb;
     }
 
-    function findPlayerById(int $id)
+    public function findPlayerById(int $id)
     {
         $qb = $this->createQueryBuilder('p')
             ->select('p')

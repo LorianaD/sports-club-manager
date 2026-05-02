@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\ContactPersons;
 use App\Entity\Player;
+use App\Entity\PlayerContact;
 use App\Form\ContactPersonsType;
+use App\Form\PlayerContactType;
 use App\Form\PlayerType;
 use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,31 +33,59 @@ final class PlayerController extends AbstractController
     public function new(Request $request, EntityManagerInterface $em)
     {
 
-    $step = $request->query->getInt('step', 1);
+        $step = $request->query->getInt('step', 1);
+        $playerId = $request->query->getInt('playerId');
 
         $newPlayer = new Player;
         $newContact = new ContactPersons;
+        $newRelation = new PlayerContact;
 
         $newFormPlayer = $this->createForm(PlayerType::class , $newPlayer);
         $newFormContact = $this->createForm(ContactPersonsType::class, $newContact);
+        $newFormRelation = $this->createForm(PlayerContactType::class, $newRelation);
 
         $newFormPlayer->handleRequest($request);
         $newFormContact->handleRequest($request);
+        $newFormRelation->handleRequest($request);
 
-
-        if ($newFormPlayer->isSubmitted() && $newFormPlayer->isValid()) {
+        if ($step === 1 && $newFormPlayer->isSubmitted() && $newFormPlayer->isValid()) {
 
             $em->persist($newPlayer);
             $em->flush();
 
-            return $this->redirectToRoute('player_index');
+            return $this->redirectToRoute('player_new', [
+                'step' => 2,
+                'playerId' => $newPlayer->getId(),
+            ]);
 
+        }
+
+        if ($step === 2 && $newFormContact->isSubmitted() && $newFormContact->isValid()) {
+
+            $player = $em->getRepository(Player::class)->find($playerId);
+
+            if (!$player) {
+                throw $this->createNotFoundException('Player not found');
+            }
+
+            $newRelation->setPlayer($player);
+            $newRelation->setContactPerson($newContact);
+
+            $em->persist($newContact);
+            $em->persist($newRelation);
+            $em->flush();
+
+            return $this->redirectToRoute('player_show', [
+                'id' => $player->getId(),
+            ]);
         }
 
         return $this->render('player/new.html.twig',[
             'step' => $step,
+            'playerId' => $playerId,
             'newPlayerForm' => $newFormPlayer,
             'newContactForm' => $newFormContact,
+            'newRelationForm' => $newFormRelation,
         ]);
 
     }

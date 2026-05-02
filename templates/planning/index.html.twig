@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Planning{% endblock %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Planning',
+    } %}
+{% endblock %}
+
+{% block body %}
+    <main class="dashboard-main">
+    
+        <section class="dashboard-card">
+            <div class="dashboard-card-header">
+                <h2 class="dashboard-card-title">Entrainements</h2>
+                <a href="{{ path('planning_index') }}" class="link-secondary">Voir tous</a>
+            </div>
+            {% if trainings %}
+                <ul>
+                    {% for training in trainings %}
+                        <li class="card-list__item">
+                            <a class="card-list__link" href="{{ path('player_show', { 'id' : training.id }) }}">
+                                <div>
+                                    <h3 class="card-list__title">{{ training.name }}</h3>
+                                    <p class="card-list__description"><span>{{ training.date }}</span> · <span>{{ training.time }}</span></p>
+                                </div>
+                                <div>
+                                
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Aucun entrainement trouvé</p>
+            {% endif %}
+        </section>
+
+        <section class="dashboard-card">
+            <div class="dashboard-card-header">
+                <h2 class="dashboard-card-title">Evenements</h2>
+                <a href="{{ path('planning_index') }}" class="link-secondary">Voir tous</a>
+            </div>
+            {% if events %}
+                <ul>
+                    {% for event in events %}
+                        <li class="card-list__item">
+                            <a class="card-list__link" href="{{ path('player_show', { 'id' : event.id }) }}">
+                                <div>
+                                    <h3 class="card-list__title">{{ event.name }}</h3>
+                                    <p class="card-list__description"><span>{{ event.date }} · <span>{{ event.time }}</span></p>
+                                </div>
+                                <div>
+                                
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Aucun événement trouvé</p>
+            {% endif %}            
+        </section>
+
+    </main>
+{% endblock %}
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

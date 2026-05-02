@@ -1,0 +1,40 @@
+{{ form_start(newFormTraining, { attr: { class: 'player-create__form' } }) }}
+    <div class="player-create_card">
+
+        <section>
+
+            <div class="player-create__field">
+                {{ form_label(newFormTraining.name, 'Titre', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newFormTraining.name, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div>
+                <div>
+                    {{ form_label(newFormTraining.date, 'Date', { label_attr: { class: 'form-body_label' }}) }}
+                    {{ form_widget(newFormTraining.date, { attr: { class: 'form-body_input' } }) }}
+                </div>
+                <div>
+                    {{ form_label(newFormTraining.time, 'Heure', { label_attr: { class: 'form-body_label' } }) }}
+                    {{ form_widget(newFormTraining.time, { attr: { class: 'form-body_input' } }) }}
+                </div>
+            </div>
+            <div>
+                {{ form_label(newFormTraining.location, 'Lieu', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newFormTraining.location, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div>
+                {{ form_label(newFormTraining.description, 'Description', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newFormTraining.description, { attr: { class: 'form-body_input' } }) }}
+            </div>
+
+        </section>
+
+        <div class="player-create_actions">
+            <a href="{{ path('player_index') }}" class="btn btn-secondary">
+                {{ return }}
+            </a>
+            <button type="submit" class="btn btn-principal">
+                {{ next }}
+            </a>
+        </div>
+    </div>
+{{ form_end(newFormTraining) }}

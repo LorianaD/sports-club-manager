@@ -1,8 +1,22 @@
+/* Card (generic) */
+
 .card {
-    background-color: var(--sb-white);
-    border-radius: var(--sb-radius-lg);
-    border: 0.5px solid #E8E8E8;
-    padding: O 14px;
+    background: var(--sb-white);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .card-list__item {
@@ -10,6 +24,21 @@
     gap: 10px;
     padding: 10px 0;
     border-bottom: 0.5px solid #f0f0f0;
+    overflow: hidden;
+    transition: background 0.15s;
+    border-radius: 6px;   
+}
+
+.card-list__item:hover {
+    background: var(--sb-yellow-light);
+}
+
+.card-list__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+
 }
 
 .card-list__title {
@@ -21,4 +50,47 @@
 .card-list__description {
     font-size: 1em;
     color: var(--sb-gray);
+}
+
+/* Dashboard card */
+
+.dashboard-card {
+    background: var(--sb-white);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.dashboard-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.dashboard-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--sb-dark);
+}
+
+.dashboard-card-header .dashboard-card-title {
+    margin-bottom: 0;
+}
+
+/* Player list */
+
+.player-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--sb-red);
+    color: var(--sb-white);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-transform: uppercase;
 }

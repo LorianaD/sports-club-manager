@@ -1,5 +1,5 @@
 
-{{ form_start(newContactForm, { attr: { class: 'player-create__form' } }) }}
+{{ form_start(newContactForm, { action: path('player_new', { step: 2, playerId: playerId }), attr: { class: 'player-create__form' } }) }}
     
     <div class="player-create_card">
     
@@ -19,28 +19,39 @@
                 <div class="player-create__field">
                     {{ form_label(newContactForm.lastname, 'Nom', { label_attr: { class: 'form-body_label' } }) }}
                     {{ form_widget(newContactForm.lastname, { attr: { class: 'form-body_input' } }) }}
+                    {{ form_errors(newContactForm.lastname) }}
                 </div>
 
                 <div class="player-create__field">
                     {{ form_label(newContactForm.firstname, 'Prénom', { label_attr: { class: 'form-body_label' } }) }}
                     {{ form_widget(newContactForm.firstname, { attr: { class: 'form-body_input' } }) }}
+                    {{ form_errors(newContactForm.firstname) }}
                 </div>
 
+            </div>
+
+            <div>
+                {{ form_label(newRelationForm.relationType, 'Relation', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newRelationForm.relationType, { attr: { class: 'form-body_input' } }) }}
+                {{ form_errors(newRelationForm.relationType) }}
             </div>
 
             <div class="player-create__field">
                 {{ form_label(newContactForm.phone_number, 'Numéro de téléphone', { label_attr: { class: 'form-body_label' } }) }}
                 {{ form_widget(newContactForm.phone_number, { attr: { class: 'form-body_input', placeholder: '06 12 34 56 78' } }) }}
+                {{ form_errors(newContactForm.phone_number) }}
             </div>            
 
             <div class="player-create__field">
                 {{ form_label(newContactForm.email, 'Email', { label_attr: { class: 'form-body_label' } }) }}
                 {{ form_widget(newContactForm.email, { attr: { class: 'form-body_input' } }) }}
+                {{ form_errors(newContactForm.email) }}
             </div>
 
             <div class="player-create__field">
                 {{ form_label(newContactForm.address, 'Adresse', { label_attr: { class: 'form-body_label' } }) }}
                 {{ form_widget(newContactForm.address, { attr: { class: 'form-body_input' } }) }}
+                {{ form_errors(newContactForm.address) }}
             </div>
 
             <div class="player-create_row">
@@ -48,11 +59,13 @@
                 <div class="player-create__field">
                     {{ form_label(newContactForm.pc, 'Code postale', { label_attr: { class: 'form-body_label' } }) }}
                     {{ form_widget(newContactForm.pc, { attr: { class: 'form-body_input' } }) }}
+                    {{ form_errors(newContactForm.pc) }}
                 </div>
 
                 <div class="player-create__field">
                     {{ form_label(newContactForm.city, 'Ville', { label_attr: { class: 'form-body_label' } }) }}
                     {{ form_widget(newContactForm.city, { attr: { class: 'form-body_input' } }) }}
+                    {{ form_errors(newContactForm.city) }}
                 </div>
 
             </div>
@@ -60,13 +73,12 @@
         </section>
 
         <div class="player-create_actions">
-            <a href="{{ path('player_new') }}?step=1" class="btn btn-secondary">
+            <a href="{{ path('player_new', { step: 1, playerId: playerId }) }}" class="btn btn-secondary">
                 {{ return }}
             </a>
-            <button class="btn btn-principal">{{ next }}</button>
+            <button type="submit" class="btn btn-principal">{{ next }}</button>
         </div>
         
     </div>
 
 {{ form_end(newContactForm) }}
-        

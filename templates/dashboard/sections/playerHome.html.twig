@@ -1,0 +1,28 @@
+<section class="dashboard-card">
+
+    <div class="dashboard-card-header">
+        <h2 class="dashboard-card-title">Derniers joueurs</h2>
+        <a href="{{ path('player_index') }}" class="link-secondary">Voir tous</a>
+    </div>
+    
+    {% if recentPlayers %}
+
+        <ul class="card-list">
+
+            {% for player in recentPlayers %}
+                <li class="card-list__item">
+                    <a href="{{ path('player_show', {id: player.id}) }}" class="card-list__link">
+                        <span class="player-avatar">{{ player.firstname|slice(0,1) }}{{ player.lastname|slice(0,1) }}</span>
+                        <span class="card-list__title">{{ player.firstname }} {{ player.lastname }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+
+        </ul>
+
+    {% else %}
+
+        <p class="empty-state">Aucun joueur enregistré.</p>
+    
+    {% endif %}
+</section>

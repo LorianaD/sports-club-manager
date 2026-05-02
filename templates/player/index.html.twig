@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PlayerController!{% endblock %}
+{% block title %}Joueurs{% endblock %}
 
 {% block header %}
     {% include "layout/header/_dashboard_page_topbar.html.twig" with {
@@ -14,24 +14,41 @@
         <div class="">
             {# SEARCH AND FILTRES #}
         </div>
-        <div class="card">
-            
-            {% for player in players %}
-                <a class="card-list__item" href="{{ path('player_show', { 'id' : player.id }) }}">
-                    <div>
-                        
-                    </div>
-                    <div>
-                        <h3 class="card-list__title">{{ player.firstname }} {{ player.lastname }}</h3>
-                        <p class="card-list__description"><span>team</span> · <span>poste</span> · <span>#{{ player.number }}</span></p>
-                    </div>
-                    <div>
-                    
-                    </div>
-                </a>
-            {% endfor %}            
 
-        </div>
+        <section class="dashboard-card">
+
+            {% if players %}
+
+                <ul class="card-list">
+
+                    {% for player in players %}
+
+                        <li class="card-list__item">
+                            <a class="card-list__link" href="{{ path('player_show', { 'id' : player.id }) }}">
+                                <div class="player-avatar">
+                                    {{ player.firstname|slice(0,1) }}{{ player.lastname|slice(0,1) }}
+                                </div>
+                                <div>
+                                    <h3 class="card-list__title">{{ player.firstname }} {{ player.lastname }}</h3>
+                                    <p class="card-list__description"><span>{{ player.team }}</span> · <span>poste</span> · <span>#{{ player.number }}</span></p>
+                                </div>
+                                <div>
+                                
+                                </div>
+                            </a>
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+            
+            {% else %}
+
+                <p class="empty-state">Aucun joueur enregistré - Commencé l'enregistrement</p>
+            
+            {% endif %}
+        </section>
+        
     </main>
 {% endblock %}
 {% block footer %}

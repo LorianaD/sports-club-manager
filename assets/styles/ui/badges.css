@@ -7,10 +7,10 @@
 
 .badge {
     display: inline-block;
-    padding: 2px 8px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .badge-red {
@@ -26,4 +26,24 @@
 .badge-ok {
     background: var(--sb-success-bg);
     color: var(--sb-success);
+}
+
+.badge-success {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.badge-warning {
+    background: #fff8e1;
+    color: #e65100;
+}
+
+.badge-danger {
+    background: #ffebee;
+    color: var(--sb-red-dark);
+}
+
+.badge-neutral {
+    background: var(--sb-grey-light);
+    color: var(--sb-grey-mid);
 }

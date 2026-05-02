@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -41,6 +43,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $phone = null;
+
+    /**
+     * @var Collection<int, Team>
+     */
+    #[ORM\ManyToMany(targetEntity: Team::class, mappedBy: 'coach')]
+    private Collection $teams;
+
+    /**
+     * @var Collection<int, TrainingSession>
+     */
+    #[ORM\ManyToMany(targetEntity: TrainingSession::class, mappedBy: 'coach')]
+    private Collection $trainingSessions;
+
+    /**
+     * @var Collection<int, Events>
+     */
+    #[ORM\ManyToMany(targetEntity: Events::class, mappedBy: 'user')]
+    private Collection $events;
+
+    public function __construct()
+    {
+        $this->teams = new ArrayCollection();
+        $this->trainingSessions = new ArrayCollection();
+        $this->events = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -155,6 +182,87 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhone(?string $phone): static
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Team>
+     */
+    public function getTeams(): Collection
+    {
+        return $this->teams;
+    }
+
+    public function addTeam(Team $team): static
+    {
+        if (!$this->teams->contains($team)) {
+            $this->teams->add($team);
+            $team->addCoach($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): static
+    {
+        if ($this->teams->removeElement($team)) {
+            $team->removeCoach($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TrainingSession>
+     */
+    public function getTrainingSessions(): Collection
+    {
+        return $this->trainingSessions;
+    }
+
+    public function addTrainingSession(TrainingSession $trainingSession): static
+    {
+        if (!$this->trainingSessions->contains($trainingSession)) {
+            $this->trainingSessions->add($trainingSession);
+            $trainingSession->addCoach($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTrainingSession(TrainingSession $trainingSession): static
+    {
+        if ($this->trainingSessions->removeElement($trainingSession)) {
+            $trainingSession->removeCoach($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Events>
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Events $event): static
+    {
+        if (!$this->events->contains($event)) {
+            $this->events->add($event);
+            $event->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Events $event): static
+    {
+        if ($this->events->removeElement($event)) {
+            $event->removeUser($this);
+        }
 
         return $this;
     }

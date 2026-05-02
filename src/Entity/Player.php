@@ -55,9 +55,33 @@ class Player
     #[ORM\OneToMany(targetEntity: PlayerContact::class, mappedBy: 'player')]
     private Collection $playerContacts;
 
+    /**
+     * @var Collection<int, Attendance>
+     */
+    #[ORM\OneToMany(targetEntity: Attendance::class, mappedBy: 'player')]
+    private Collection $attendances;
+
+    /**
+     * @var Collection<int, Sanction>
+     */
+    #[ORM\OneToMany(targetEntity: Sanction::class, mappedBy: 'player')]
+    private Collection $sanctions;
+
+    #[ORM\ManyToOne(inversedBy: 'players')]
+    private ?Team $team = null;
+
+    /**
+     * @var Collection<int, Position>
+     */
+    #[ORM\ManyToMany(targetEntity: Position::class, inversedBy: 'players')]
+    private Collection $position;
+
     public function __construct()
     {
         $this->playerContacts = new ArrayCollection();
+        $this->attendances = new ArrayCollection();
+        $this->sanctions = new ArrayCollection();
+        $this->position = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -234,6 +258,102 @@ class Player
                 $playerContact->setPlayer(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Attendance>
+     */
+    public function getAttendances(): Collection
+    {
+        return $this->attendances;
+    }
+
+    public function addAttendance(Attendance $attendance): static
+    {
+        if (!$this->attendances->contains($attendance)) {
+            $this->attendances->add($attendance);
+            $attendance->setPlayer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAttendance(Attendance $attendance): static
+    {
+        if ($this->attendances->removeElement($attendance)) {
+            // set the owning side to null (unless already changed)
+            if ($attendance->getPlayer() === $this) {
+                $attendance->setPlayer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sanction>
+     */
+    public function getSanctions(): Collection
+    {
+        return $this->sanctions;
+    }
+
+    public function addSanction(Sanction $sanction): static
+    {
+        if (!$this->sanctions->contains($sanction)) {
+            $this->sanctions->add($sanction);
+            $sanction->setPlayer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSanction(Sanction $sanction): static
+    {
+        if ($this->sanctions->removeElement($sanction)) {
+            // set the owning side to null (unless already changed)
+            if ($sanction->getPlayer() === $this) {
+                $sanction->setPlayer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?Team $team): static
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Position>
+     */
+    public function getPosition(): Collection
+    {
+        return $this->position;
+    }
+
+    public function addPosition(Position $position): static
+    {
+        if (!$this->position->contains($position)) {
+            $this->position->add($position);
+        }
+
+        return $this;
+    }
+
+    public function removePosition(Position $position): static
+    {
+        $this->position->removeElement($position);
 
         return $this;
     }

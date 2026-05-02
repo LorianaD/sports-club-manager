@@ -1,0 +1,25 @@
+/* Tables */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey);
+    font-size: 13px;
+}
+
+.table th {
+    font-weight: 600;
+    color: var(--grey-mid);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr:hover {
+    background: var(--grey-light);
+}

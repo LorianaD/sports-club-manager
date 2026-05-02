@@ -11,7 +11,9 @@
 
 {% block body %}
     <main class="dashboard-main">
-    
+        {% include "dashboard/sections/heroHome.html.twig" %}
+        {% include "dashboard/sections/trainingHome.html.twig" %}
+        {% include "dashboard/sections/playerHome.html.twig" %}
     </main>
 {% endblock %}
 
