@@ -19,10 +19,10 @@ class Category
     private ?string $name = null;
 
     #[ORM\Column(length: 4)]
-    private ?string $min_age = null;
+    private ?int $min_age = null;
 
     #[ORM\Column(length: 4)]
-    private ?string $max_age = null;
+    private ?int $max_age = null;
 
     /**
      * @var Collection<int, Team>

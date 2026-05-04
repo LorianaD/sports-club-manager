@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teams{% endblock %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Team',
+        actionPath: path('team_new')
+    } %}
+{% endblock %}
+
+{% block body %}
+    <main class="dashboard-main">
+        <section class="dashboard-card">
+            {% if teams %}
+                <ul class="card-list">
+
+                    {% for team in teams %}
+
+                        <li class="card-list__item">
+                            <a class="card-list__link" href="{{ path('team_show', { 'id' : team.id }) }}">
+                                <div>
+                                    <h3 class="card-list__title">{{ team.name }}</h3>
+                                    <p class="card-list__description"><span>{{ team.category }}</span></p>
+                                </div>
+                            </a>
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+            {% else %}
+                <p class="empty-state">Aucun joueur enregistré - Commencé l'enregistrement</p>
+            {% endif %}
+        </section>    
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

@@ -23,6 +23,11 @@
     color: var(--sb-yellow-dark);
 }
 
+.badge-team {
+    background: var(--sb-yellow);
+    color: var(--sb-dark);
+}
+
 .badge-ok {
     background: var(--sb-success-bg);
     color: var(--sb-success);

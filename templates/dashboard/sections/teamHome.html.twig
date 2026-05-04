@@ -1,0 +1,27 @@
+<section class="dashboard-card">
+
+    <div class="dashboard-card-header">
+        <h2 class="dashboard-card-title">Derniers Equipes</h2>
+        <a href="{{ path('team_index') }}" class="link-secondary">Voir tous</a>
+    </div>
+    
+    {% if recentTeams %}
+
+        <ul class="card-list">
+
+            {% for team in recentTeams %}
+                <li class="card-list__item">
+                    <a href="{{ path('team_show', {id: team.id}) }}" class="card-list__link">
+                        <span class="card-list__title">{{ team.name }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+
+        </ul>
+
+    {% else %}
+
+        <p class="empty-state">Aucune équipe enregistré.</p>
+    
+    {% endif %}
+</section>

@@ -40,7 +40,7 @@
 .form-body_label {
     font-size: 14px;
     font-weight: 500;
-    color: #6B6B6B;
+    color: var(--sb-gray);
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
@@ -253,4 +253,5 @@
 
 .player-create_actions {
     display: flex;
+    gap: 20px;
 }

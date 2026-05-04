@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle catégory{% endblock %}
+
+{% block header %}
+<div class="player-create__wrapper">
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: "Nouvelle catégory d'âge",
+        backPath: path('more_index'),
+        img: '✕'
+    } %}
+{% endblock %}
+{% block body %}
+    <main class="player-create">
+
+        {{ form_start(editCategoryForm, { attr: { class: 'player-create__form' } }) }}
+            <div class="player-create_card">
+                <section class="player-create__section">
+                    <div class="player-create__field">
+                        {{ form_label(editCategoryForm.name, "Catégorie", { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(editCategoryForm.name, { attr: { class: 'form-body_input' } }) }}
+                    </div>
+                    <div class="player-create__field">
+                        {{ form_label(editCategoryForm.min_age, "Age minimum", { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(editCategoryForm.min_age, { attr: { class: 'form-body_input' } }) }}
+                    </div>
+                    <div class="player-create__field">
+                        {{ form_label(editCategoryForm.max_age, "Age maximum", { label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(editCategoryForm.max_age, { attr: { class: 'form-body_input' } }) }}
+                    </div>                    
+                </section>
+                <div class="player-create_actions">
+                    <a href="{{ path('more_index') }}" class="btn btn-secondary">
+                        Annulé
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Validé
+                    </a>
+                </div>
+            </div>
+        {{ form_end(editCategoryForm) }}
+
+    </main>
+</div>
+{% endblock %}
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

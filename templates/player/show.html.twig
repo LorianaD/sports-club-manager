@@ -20,6 +20,10 @@
         <div class="player-profil__essentials">
             <h3 class="player-profil__title">{{ player.firstname }} {{ player.lastname }}</h3>
             <p class="player-profil__age">{{ player.age }} ans · né le {{ player.birthDate|date('d/m/Y') }}</p>
+            <div class="player-profil__age">
+                <span class="badge badge-team">{{ player.team.name|default('Aucune équipe') }}</span>
+                <span class="badge badge-neutral">#{{ player.number|default('N° non renseigné') }} {{ player.playerPosition.position.name|default('Aucune poste') }}</span>
+            </div>
         </div>
     </div>
     <main class="dashboard-main">
@@ -61,32 +65,37 @@
                     <div class="player-profil__header-deco deco-yellow"></div>
                     <h4 class="">Contact</h4>
                 </div>
-                <div class="player-profil__details-list">
-                    {# Contact1 #}
-                    <div class="">
-                        <div>
-                            {# initial #}
-                        </div>
-                        <div>
-                            {# coordonées #}
-                            <h5>Prénom NOM · type de relation</h5>
-                            <span>numero</span>
-                            <span>email</span>
-                        </div>          
+
+                {% if player.playerContacts|length > 0 %}
+                    <div class="player-profil__details-list">
+
+                        {% for playerContact in player.playerContacts %}
+                            <div class="card-list__item">
+                                <div class="">
+                                    <div class="player-profil__badge player-avatar">
+
+                                        {{ playerContact.contactPerson.firstname|first|upper }}{{ playerContact.contactPerson.lastname|first|upper }}
+                                    
+                                    </div>
+                                    <div>
+                                        {# coordonées #}
+                                        <h5 class="card-list__title"><span>{{ playerContact.contactPerson.firstname|upper }}</span> <span>{{ playerContact.contactPerson.lastname|upper }}</span> · {{ playerContact.relationType }}</h5>
+                                        <span class="card-list__description">{{ playerContact.contactPerson.phoneNumber }}</span>
+                                        <span class="card-list__description">{{ playerContact.contactPerson.email }}</span>
+                                    </div>
+                                </div>
+                                <div class="cta-edit">
+                                    <img src="{{ asset('images/icons/edit.png') }}" alt="modifier" class="cta-edit__img">
+                                </div>
+                            </div>
+                        {% endfor %}
+
                     </div>
-                    {# Contact2 si existe #}
-                    <div>
-                        <div>
-                            {# initial #}
-                        </div>
-                        <div>
-                            {# coordonées #}
-                            <h5>Prénom NOM · type de relation</h5>
-                            <span>numero</span>
-                            <span>email</span>
-                        </div>          
+                {% else %}
+                    <div class="player-profil__details-list">
+                        <p>Acun contact enregistré</p>                    
                     </div>
-                </div>
+                {% endif %}
             </div>
         </div>
     </main>

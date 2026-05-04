@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plus{% endblock %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Plus',
+    } %}
+{% endblock %}
+
+{% block body %}
+    <main class="dashboard-main">
+        <section class="dashboard-card">
+
+            <div class="dashboard-card-header">
+                <h2 class="dashboard-card-title">Gestion des catégories d'âge</h2>
+                <a href="{{ path('more_newCategory') }}">Définir les catégories</a>
+            </div>
+            
+            <div class="dashboard-card-body">
+
+                {% if categories %}
+
+                    <table class="table table--card">
+
+                        <thead>
+                            <tr>
+                                <th>Catégorie</th>
+                                <th>Âge minimum</th>
+                                <th>Âge maximum</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for category in categories %}
+                                <tr class="">
+                                    <td class="table__title">{{ category.name }}</td>
+                                    <td>{{ category.minAge }} ans</td>
+                                    <td>{{ category.maxAge }} ans</td>
+                                    <td><a href="{{ path('more_editCategory', { 'id' : category.id }) }}">Modifié</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+
+                {% else %}
+
+                    <p class="empty-state">Aucune categories renseigné.</p>
+                
+                {% endif %}
+
+            </div>
+
+        </section>
+        <section class="dashboard-card">
+
+            <div class="dashboard-card-header">
+                <h2 class="dashboard-card-title">Gestion des postes dans une équipe</h2>
+                <a href="{{ path('more_newPosition') }}">Ajouté des postes</a>
+            </div>
+            
+            {% if positions %}
+
+                <ul class="card-list">
+
+                    {% for position in positions %}
+                        <li class="card-list__item">
+                            <span class="card-list__title">{{ position.name }}</span>
+                            <a href="{{ path('more_editPosition', { 'id' : position.id }) }}">Modifié</a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p class="empty-state">Aucune poste renseigné.</p>
+            
+            {% endif %}
+
+        </section>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

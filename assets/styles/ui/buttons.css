@@ -23,7 +23,7 @@
     background: var(--sb-red-dark);
 }
 
-.btn-secodary {
+.btn-secondary {
     background-color: var(--sb-white);
     color: var(--sb-red);
     border: 1px solid var(--sb-red);
@@ -70,4 +70,9 @@
 
 .link-secondary:hover {
     text-decoration: underline;
+}
+
+.cta-edit {
+    width: 30px;
+    height: 30px;
 }

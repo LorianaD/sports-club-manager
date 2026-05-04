@@ -12,6 +12,15 @@
                 </span>
             </a>
 
+            <a class="footer-nav__item" href="{{ path("team_index") }}">
+                <div class="footer-nav__icon">
+                    <img src="{{asset('images/icons/maillot.png')}}" />
+                </div>  
+                <span class="footer-nav__label">
+                    Equipes
+                </span>          
+            </a>
+
             <a class="footer-nav__item" href="{{ path("player_index") }}">
                 <div class="footer-nav__icon">
                     <img src="{{asset('images/icons/player.png')}}" />
@@ -39,7 +48,7 @@
                 </span>
             </a>
 
-            <a class="footer-nav__item">
+            <a class="footer-nav__item" href="{{ path("more_index") }}">
                 <div class="footer-nav__icon">
                     <img src="{{asset('images/icons/setting.png')}}" />
                 </div>

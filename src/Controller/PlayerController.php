@@ -7,6 +7,7 @@ use App\Entity\Player;
 use App\Entity\PlayerContact;
 use App\Form\ContactPersonsType;
 use App\Form\PlayerContactType;
+use App\Form\PlayerTeamType;
 use App\Form\PlayerType;
 use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -35,6 +36,7 @@ final class PlayerController extends AbstractController
 
         $step = $request->query->getInt('step', 1);
         $playerId = $request->query->getInt('playerId');
+        $player = null;
 
         $newPlayer = new Player;
         $newContact = new ContactPersons;
@@ -43,6 +45,7 @@ final class PlayerController extends AbstractController
         $newFormPlayer = $this->createForm(PlayerType::class , $newPlayer);
         $newFormContact = $this->createForm(ContactPersonsType::class, $newContact);
         $newFormRelation = $this->createForm(PlayerContactType::class, $newRelation);
+        $newFormTeam = null;
 
         $newFormPlayer->handleRequest($request);
         $newFormContact->handleRequest($request);
@@ -75,9 +78,30 @@ final class PlayerController extends AbstractController
             $em->persist($newRelation);
             $em->flush();
 
-            return $this->redirectToRoute('player_show', [
-                'id' => $player->getId(),
+            return $this->redirectToRoute('player_new', [
+                'step' => 3,  
+                'playerId' => $player->getId(),
             ]);
+        }
+
+        if ($step === 3) {
+            
+            $player = $em->getRepository(Player::class)->find($playerId);
+            
+            if (!$player) {
+                throw $this->createNotFoundException('Player not found');
+            }
+
+            $newFormTeam = $this->createForm(PlayerTeamType::class, $player);
+            $newFormTeam->handleRequest($request);
+
+            if ($newFormTeam->isSubmitted() && $newFormTeam->isValid()) {
+                $em->flush();
+        
+                return $this->redirectToRoute('player_show', [
+                    'playerId' => $player->getId(),
+                ]);
+            }
         }
 
         return $this->render('player/new.html.twig',[
@@ -86,6 +110,7 @@ final class PlayerController extends AbstractController
             'newPlayerForm' => $newFormPlayer,
             'newContactForm' => $newFormContact,
             'newRelationForm' => $newFormRelation,
+            'newTeamForm' => $newFormTeam,
         ]);
 
     }

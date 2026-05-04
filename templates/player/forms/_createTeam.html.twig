@@ -1,0 +1,37 @@
+{{ form_start(newTeamForm, { attr: { class: 'player-create__form' } }) }}
+    <div class="player-create_card">
+        <section class="player-create__section">
+            <div class="player-create__section-header">
+                <span class="player-create__section-line"></span>
+                <span class="player-create__section-label">
+                    <span class="player-create__section-dot"></span>
+                    équipe
+                </span>
+                <span class="player-create__section-line"></span>
+            </div>
+
+            <div class="player-create__field">
+                {{ form_label(newTeamForm.team, 'Equipe assignée', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newTeamForm.team, { attr: { class: 'form-body_input', placeholder: '' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(newTeamForm.number, 'Numéro de maillot', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newTeamForm.number, { attr: { class: 'form-body_input', placeholder: '' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(newTeamForm.position, 'Poste (choix multiple)', { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(newTeamForm.position, { attr: { class: 'form-body_input'} }) }}
+            </div>
+        </section>
+
+        <div class="player-create_actions">
+            <a href="{{ path('player_new', { step: 2, playerId: playerId }) }}" class="btn btn-secondary">
+                {{ return }}
+            </a>
+            <button type="submit" class="btn btn-primary">
+                {{ next }}
+            </button>
+        </div>
+
+    </div>
+{{ form_end(newTeamForm) }}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\PlayerRepository;
+use App\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,14 +11,25 @@ use Symfony\Component\Routing\Attribute\Route;
 final class DashboardController extends AbstractController
 {
     #[Route('/dashboard', name: 'user_dashboard')]
-    public function index(PlayerRepository $playerRepository): Response
+    public function index(PlayerRepository $playerRepository, TeamRepository $teamRepository): Response
     {
 
         
-        $recentPlayers = $playerRepository->findBy([], ['id' => 'DESC'], 5);
+        $recentPlayers = $playerRepository->findBy( 
+            [], 
+            ['id' => 'DESC'], 
+            5
+        );
+
+        $recentTeams = $teamRepository->findBy(
+            [],
+            ['id' => 'DESC'],
+            5
+        );
 
         return $this->render('dashboard/index.html.twig', [
             'recentPlayers' => $recentPlayers,
+            'recentTeams' => $recentTeams,
         ]);
     }
 }

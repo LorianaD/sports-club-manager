@@ -16,7 +16,7 @@ class TeamRepository extends ServiceEntityRepository
         parent::__construct($registry, Team::class);
     }
 
-    public function findAllPlayer()
+    public function findAllTeam()
     {
         $qb = $this->createQueryBuilder('t')
             ->select('t')
@@ -26,7 +26,7 @@ class TeamRepository extends ServiceEntityRepository
         return $qb;
     }
 
-    public function findPlayerById(int $id)
+    public function findTeamById(int $id)
     {
         $qb = $this->createQueryBuilder('t')
             ->select('t')

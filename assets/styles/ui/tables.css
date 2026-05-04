@@ -8,18 +8,39 @@
 .table td {
     padding: 10px 12px;
     text-align: left;
-    border-bottom: 1px solid var(--grey);
+    border-bottom: 1px solid var(--sb-grey);
     font-size: 13px;
 }
 
 .table th {
     font-weight: 600;
-    color: var(--grey-mid);
+    color: var(--sb-grey-mid);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .table tbody tr:hover {
-    background: var(--grey-light);
+    background: var(--sb-yellow-light);
+}
+
+.table--card {
+    margin-top: 16px;
+    background-color: var(--sb-white);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table--card th,
+.table--card td {
+    padding: 12px 14px;
+}
+
+.table--card th {
+    background-color: var(--sb-grey-light);
+}
+
+.table__title {
+    font-weight: 600;
+    color: var(--sb-dark);
 }

@@ -51,7 +51,7 @@
 
         </section>
 
-        <section class="player-create_section">
+        <section class="player-create__section">
 
             <div class="player-create__section-header">
                 <span class="player-create__section-line"></span>
@@ -97,18 +97,18 @@
             {{ form_widget(newPlayerForm.license_number, { attr: { class: 'form-body_input' } }) }}
         </div>
 
-        <div class="player-create__field">
+        {# <div class="player-create__field">
             {{ form_label(newPlayerForm.number, 'Numéro de maillot', { label_attr: { class: 'form-body_label' } }) }}
             {{ form_widget(newPlayerForm.number, { attr: { class: 'form-body_input' } }) }}
-        </div> 
+        </div>  #}
 
         <div class="player-create_actions">
             <a href="{{ path('player_index') }}" class="btn btn-secondary">
                 {{ return }}
             </a>
-            <button type="submit" class="btn btn-principal">
+            <button type="submit" class="btn btn-primary">
                 {{ next }}
-            </a>
+            </button>
         </div>
         
     </div>

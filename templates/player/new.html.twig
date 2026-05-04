@@ -27,6 +27,12 @@
                 next: 'Suivant',
                 return: 'Retour'
             } %}
+        {% elseif step == 3 %}
+            {% include "player/forms/_createTeam.html.twig" with {
+                
+                next: 'Validé',
+                return: 'Retour'
+            } %}            
         {% endif %}
 
     </main>

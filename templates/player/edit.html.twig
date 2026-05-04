@@ -124,13 +124,13 @@
                     {{ form_widget(editPlayerForm.license_number, { attr: { class: 'form-body_input' } }) }}
                 </div>
 
-                <div class="player-create__field">
-                    {{ form_label(editPlayerForm.number, 'Numéro de maillot', { label_attr: { class: 'form-body_label' } }) }}
-                    {{ form_widget(editPlayerForm.number, { attr: { class: 'form-body_input' } }) }}
-                </div> 
-
                 <div class="player-create_actions">
-                    <button class="btn btn-principal">Créer le compte</button>
+                    <a href="{{ path('player_show', { id: player.id }) }}" class="btn btn-secondary">
+                        Annulé
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Validé
+                    </a>
                 </div>
                 
             </div>

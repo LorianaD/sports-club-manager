@@ -17,19 +17,16 @@ class TeamType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('coach', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-                'multiple' => true,
-            ])
-            ->add('events', EntityType::class, [
-                'class' => Events::class,
-                'choice_label' => 'id',
-                'multiple' => true,
-            ])
+            // ->add('coach', EntityType::class, [
+            //     'class' => User::class,
+            //     'choice_label' => 'id',
+            //     'multiple' => true,
+            // ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => 'id',
+                'choice_label' => function (Category $category) {
+                    return $category->getName() . ' (' . $category->getMinAge() . '-' . $category->getMaxAge() . ' ans)';
+                },
             ])
         ;
     }

@@ -1,27 +1,31 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Joueurs{% endblock %}
+{% extends "base.html.twig" %}
 
 {% block header %}
     {% include "layout/header/_dashboard_page_topbar.html.twig" with {
-        title: 'Joueurs',
-        actionPath: path('player_new')
+        title: "Fiche de l'équipe",
+        backPath: path('team_index'),
+        img: '←',
+        
+        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit">'
     } %}
 {% endblock %}
-
 {% block body %}
-    <main class="dashboard-main">
-        <div class="">
-            {# SEARCH AND FILTRES #}
-        </div>
 
+    <div class="player-profil__header">
+        <div class="player-profil__essentials">
+            <h3 class="player-profil__title">{{ team.name }}</h3>
+            <p class="player-profil__age">{{ team.category }}</p>
+        </div>
+    </div>
+    
+    <main class="dashboard-main">
         <section class="dashboard-card">
 
-            {% if players %}
+            {# {% if players %} #}
 
                 <ul class="card-list">
 
-                    {% for player in players %}
+                    {% for player in team.players %}
 
                         <li class="card-list__item">
                             <a class="card-list__link" href="{{ path('player_show', { 'id' : player.id }) }}">
@@ -30,7 +34,7 @@
                                 </div>
                                 <div>
                                     <h3 class="card-list__title">{{ player.firstname }} {{ player.lastname }}</h3>
-                                    <p class="card-list__description"><span>{{ player.team.name|default('Aucune équipe') }}</span> · <span>{{ player.playerPosition.position.name|default('Aucune poste') }}</span> · <span>#{{ player.number|default('N° non renseigné') }}</span></p>
+                                    <p class="card-list__description"><span>{{ player.team }}</span> · <span>poste</span> · <span>#{{ player.number }}</span></p>
                                 </div>
                                 <div>
                                 
@@ -42,16 +46,13 @@
 
                 </ul>
             
-            {% else %}
+            {# {% else %} #}
 
-                <p class="empty-state">Aucun joueur enregistré - Commencé l'enregistrement</p>
+                <p class="empty-state">Aucun joueur enregistré dans cette équipe - Commencé l'enregistrement</p>
             
-            {% endif %}
-            
-        </section>
-        
+            {# {% endif %} #}
+
+        </section>            
     </main>
-{% endblock %}
-{% block footer %}
-    {% include "layout/dashboardFooter.html.twig" %}
+   
 {% endblock %}

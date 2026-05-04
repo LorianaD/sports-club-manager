@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Player;
+use App\Entity\Team;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -48,19 +50,19 @@ class PlayerType extends AbstractType
             ->add('birth_date', null, [
                 'widget' => 'single_text',
             ])
-            ->add('number', IntegerType::class, [
-                'required' => false,
-                'constraints' => [
-                    new Length(
-                        min: 1,
-                        max: 255
-                    )
-                ],
-                'attr' => [
-                    'maxlength' => 255,
-                    'placeholder' => '10'
-                ],
-            ])
+            // ->add('number', IntegerType::class, [
+            //     'required' => false,
+            //     'constraints' => [
+            //         new Length(
+            //             min: 1,
+            //             max: 255
+            //         )
+            //     ],
+            //     'attr' => [
+            //         'maxlength' => 255,
+            //         'placeholder' => '10'
+            //     ],
+            // ])
             ->add('address', TextType::class, [
                 'required' => false,
                 'constraints' => [
@@ -140,6 +142,10 @@ class PlayerType extends AbstractType
                 ],
             ])
             // ->add('photo')
+            // ->add('team', EntityType::class, [
+            //     'class' => Team::class,
+            //     'choice_label' => 'name',
+            // ])
             // ->add('Submit', SubmitType::class, [
             //     'label'    => 'Envoyer'
             // ])
