@@ -5,7 +5,8 @@
 {% block header %}
     {% include "layout/header/_dashboard_page_topbar.html.twig" with {
         title: 'Joueurs',
-        actionPath: path('player_new')
+        actionPath: path('player_new'),
+        actionLabel: '+'
     } %}
 {% endblock %}
 
@@ -30,12 +31,22 @@
                                 </div>
                                 <div>
                                     <h3 class="card-list__title">{{ player.firstname }} {{ player.lastname }}</h3>
-                                    <p class="card-list__description"><span>{{ player.team.name|default('Aucune équipe') }}</span> · <span>{{ player.playerPosition.position.name|default('Aucune poste') }}</span> · <span>#{{ player.number|default('N° non renseigné') }}</span></p>
+                                    <p class="card-list__description"><span>{{ player.team.name|default('Aucune équipe') }}</span> · <span>
+                                        {% if player.position is not empty %}
+                                            {{ player.position|first.name }}
+                                        {% else %}
+                                            Aucun poste
+                                        {% endif %}
+                                    </span> · <span>#{{ player.number|default('N° non renseigné') }}</span></p>
                                 </div>
                                 <div>
                                 
                                 </div>
                             </a>
+                            {% include "partials/_delete.html.twig" with {
+                                pathAction: path("player_delete", { id: player.id }),
+                                id: player.id
+                            } %}
                         </li>
 
                     {% endfor %}

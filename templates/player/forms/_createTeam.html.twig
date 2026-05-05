@@ -1,4 +1,4 @@
-{{ form_start(newTeamForm, { attr: { class: 'player-create__form' } }) }}
+{{ form_start(newTeamForm, { action: formAction|default(null), attr: { class: 'player-create__form' } }) }}
     <div class="player-create_card">
         <section class="player-create__section">
             <div class="player-create__section-header">
@@ -25,11 +25,11 @@
         </section>
 
         <div class="player-create_actions">
-            <a href="{{ path('player_new', { step: 2, playerId: playerId }) }}" class="btn btn-secondary">
-                {{ return }}
+            <a href="{{ returnPath }}" class="btn btn-secondary">
+                {{ return|default('Retour') }}
             </a>
             <button type="submit" class="btn btn-primary">
-                {{ next }}
+                {{ next|default('Valider') }}
             </button>
         </div>
 

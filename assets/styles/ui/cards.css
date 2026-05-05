@@ -27,10 +27,30 @@
     overflow: hidden;
     transition: background 0.15s;
     border-radius: 6px;
+    align-items: center;
 }
 
 .card-list__item:hover {
     background: var(--sb-yellow-light);
+}
+
+.card-list__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px; 
+}
+
+.card-list__text {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.card-list__info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .card-list__link {
@@ -38,7 +58,7 @@
     align-items: center;
     gap: 10px;
     padding: 8px 10px;
-
+    width: 100%;
 }
 
 .card-list__title {
@@ -50,6 +70,13 @@
 .card-list__description {
     font-size: 1em;
     color: var(--sb-gray);
+}
+
+.cta-box {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* Dashboard card */

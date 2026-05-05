@@ -99,7 +99,7 @@ final class PlayerController extends AbstractController
                 $em->flush();
         
                 return $this->redirectToRoute('player_show', [
-                    'playerId' => $player->getId(),
+                    'Id' => $player->getId(),
                 ]);
             }
         }
@@ -148,10 +148,35 @@ final class PlayerController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/team/edit', name: 'player_team_edit', methods: ['GET', 'POST'])]
+    public function editTeam(Player $player, Request $request, EntityManagerInterface $em)
+    {
+        $form = $this->createForm(PlayerTeamType::class, $player);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+
+            return $this->redirectToRoute('player_show', [
+                'id' => $player->getId(),
+            ]);
+        }
+
+        return $this->render('player/editTeam.html.twig', [
+            'form' => $form,
+            'player' => $player,
+        ]);
+    }
+
     #[Route('/{id}/delete', name: "player_delete", methods: ["POST"])]
     public function delete(Player $player, Request $request, EntityManagerInterface $em)
     {
         if ($this->isCsrfTokenValid('delete' . $player->getId(), $request->request->get('_token'))) {
+            
+            foreach($player->getPlayerContacts() as $playerContact) {
+                $em->remove($playerContact);
+            }
+
             $em->remove($player);
             $em->flush();
 

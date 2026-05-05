@@ -6,7 +6,8 @@
         backPath: path('player_index'),
         img: '←',
         actionPath: path('player_edit', { id: player.id }),
-        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit">'
+        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit" class="dashboard-topbar_cta-img">',
+        actionText: 'Modifier'
     } %}
 {% endblock %}
 {% block body %}
@@ -20,9 +21,20 @@
         <div class="player-profil__essentials">
             <h3 class="player-profil__title">{{ player.firstname }} {{ player.lastname }}</h3>
             <p class="player-profil__age">{{ player.age }} ans · né le {{ player.birthDate|date('d/m/Y') }}</p>
-            <div class="player-profil__age">
+            <div class="player-profil__sport">
                 <span class="badge badge-team">{{ player.team.name|default('Aucune équipe') }}</span>
-                <span class="badge badge-neutral">#{{ player.number|default('N° non renseigné') }} {{ player.playerPosition.position.name|default('Aucune poste') }}</span>
+                <span class="badge badge-neutral">#{{ player.number|default('N° non renseigné') }} </span>
+                <span class="badge badge-neutral">
+                    {% if player.position is not empty %}
+                        {{ player.position|map(position => position.name)|join(', ') }}
+                    {% else %}
+                        Aucun poste
+                    {% endif %}
+                </span>
+                <a href="{{ path('player_team_edit', { id: player.id }) }}" class="player-show__team-edit">
+                    <img src="{{ asset('images/icons/edit.png') }}" alt="Modifier les informations sportives" class="player-show__team-edit-img">
+                    <span>Modifier</span>
+                </a>
             </div>
         </div>
     </div>
@@ -39,7 +51,7 @@
                             Téléphone
                         </span>
                         <span class="player-profil__item-descr">
-                            {{ player.phoneNumber }}
+                            {{ player.formattedPhoneNumber }}
                         </span>
                     </div>
                     <div class="player-profil__details-item">
@@ -70,30 +82,41 @@
                     <div class="player-profil__details-list">
 
                         {% for playerContact in player.playerContacts %}
-                            <div class="card-list__item">
-                                <div class="">
-                                    <div class="player-profil__badge player-avatar">
+                            <div class="card-list__row">
+                                <div class="card-list__text">
+                                    <div class="player-profil__badge">
 
                                         {{ playerContact.contactPerson.firstname|first|upper }}{{ playerContact.contactPerson.lastname|first|upper }}
                                     
                                     </div>
-                                    <div>
+                                    <div class="card-list__info">
                                         {# coordonées #}
-                                        <h5 class="card-list__title"><span>{{ playerContact.contactPerson.firstname|upper }}</span> <span>{{ playerContact.contactPerson.lastname|upper }}</span> · {{ playerContact.relationType }}</h5>
-                                        <span class="card-list__description">{{ playerContact.contactPerson.phoneNumber }}</span>
+                                        <h5 class="card-list__title"><span>{{ playerContact.contactPerson.firstname }}</span> <span>{{ playerContact.contactPerson.lastname|upper }}</span> · {{ playerContact.relationType }}</h5>
+                                        <span class="card-list__description">{{ playerContact.contactPerson.formattedPhoneNumber }} </span>
                                         <span class="card-list__description">{{ playerContact.contactPerson.email }}</span>
                                     </div>
                                 </div>
-                                <div class="cta-edit">
-                                    <img src="{{ asset('images/icons/edit.png') }}" alt="modifier" class="cta-edit__img">
+                                <div class="cta-box">
+                                    <a class="cta-edit" href="{{ path('player_contact_edit', { player: player.id, relation: playerContact.id }) }}" class="cta-edit">
+                                        <img src="{{ asset('images/icons/edit.png') }}" alt="modifier" class="cta-edit__img">
+                                        <span>Modifier</span>
+                                    </a>
+                                    {% include "partials/_delete.html.twig" with {
+                                        pathAction: path('player_contact_delete', { 
+                                            player : player.id, 
+                                            relation: playerContact.id 
+                                        }),
+                                        id: playerContact.id
+                                    } %}
                                 </div>
                             </div>
                         {% endfor %}
-
+                
                     </div>
                 {% else %}
                     <div class="player-profil__details-list">
-                        <p>Acun contact enregistré</p>                    
+                        <p>Aucun contact enregistré</p>
+                        <a href="{{ path('player_contact_new', { id: player.id }) }}">Ajoutez-en</a>
                     </div>
                 {% endif %}
             </div>

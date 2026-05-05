@@ -19,10 +19,10 @@ class PlayerContactType extends AbstractType
         $builder
             ->add('relationType', ChoiceType::class, [
                 'choices' => [
-                    'Père' => 'dad',
-                    'Mère' => 'mother',
-                    'Tuteur' => 'guardian',
-                    'Pérsone à prévenir' => 'emergency_contact'
+                    'Père' => 'Père',
+                    'Mère' => 'Mère',
+                    'Tuteur' => 'Tuteur',
+                    'Persone à prévenir' => 'Persone à prévenir'
                 ],
                 'placeholder' => 'Choisir une relation',
             ])

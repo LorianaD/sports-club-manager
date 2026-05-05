@@ -16,6 +16,13 @@
     border-radius: 50%;
     padding: 25px;
     font-size: 1.5em;
+    font-weight: 700;
+}
+
+.player-profil__essentials {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .player-profil__title {
@@ -23,8 +30,12 @@
     font-size: 1.5em;
 }
 
-.player-profil__age {
+.player-profil__sport {
     color: rgba(255, 255, 255, 0.65);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .player-profil__details {
@@ -72,4 +83,24 @@
 
 .player-profil__item-descr {
     display: flex;
+}
+
+.player-show__team-edit {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--sb-yellow);
+    font-size: 0.75em;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.player-show__team-edit-img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
 }

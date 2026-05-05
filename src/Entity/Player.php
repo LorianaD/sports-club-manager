@@ -179,9 +179,22 @@ class Player
 
     public function setPhoneNumber(?string $phone_number): static
     {
+        if ($phone_number !== null) {
+            $phone_number = preg_replace('/\D/', '', $phone_number);
+        }
+
         $this->phone_number = $phone_number;
 
         return $this;
+    }
+
+    public function getFormattedPhoneNumber(): ?string
+    {
+        if ($this->phone_number === null) {
+            return null;
+        }
+
+        return trim(chunk_split($this->phone_number, 2, ' '));
     }
 
     public function getEmail(): ?string

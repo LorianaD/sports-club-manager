@@ -109,7 +109,19 @@
 
 .dashboard-topbar_cta {
     color: var(--sb-yellow);
-    font-size: 26px;
-    width: 30px;
-    height: 30px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 6px 10px;
+}
+
+.dashboard-topbar_cta-img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
 }

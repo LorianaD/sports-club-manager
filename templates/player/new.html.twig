@@ -16,20 +16,25 @@
         {% if step == 1 %}
 
             {% include "player/forms/_createPlayer.html.twig" with {
-                form: newPlayerForm,
+                newPlayerForm: newPlayerForm,
                 next: 'Suivant',
                 return: 'Annuler'
             }%}
 
         {% elseif step == 2 %}
             {% include "player/forms/_createContact.html.twig" with {
-                form: newContactForm,
+                newContactForm: newContactForm,
+                newRelationForm: newRelationForm,
+                formAction: path('player_new', { step: 2, playerId: playerId }),
+                returnPath: path('player_new', { step: 1, playerId: playerId }),
                 next: 'Suivant',
                 return: 'Retour'
             } %}
         {% elseif step == 3 %}
             {% include "player/forms/_createTeam.html.twig" with {
-                
+                newTeamForm: newTeamForm,
+                formAction: path('player_new', { step: 3, playerId: playerId }),
+                returnPath: path('player_new', { step: 2, playerId: playerId }),
                 next: 'Validé',
                 return: 'Retour'
             } %}            

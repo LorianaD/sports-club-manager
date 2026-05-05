@@ -1,5 +1,5 @@
 
-{{ form_start(newContactForm, { action: path('player_new', { step: 2, playerId: playerId }), attr: { class: 'player-create__form' } }) }}
+{{ form_start(newContactForm, { action: formAction, attr: { class: 'player-create__form' } }) }}
     
     <div class="player-create_card">
     
@@ -73,7 +73,7 @@
         </section>
 
         <div class="player-create_actions">
-            <a href="{{ path('player_new', { step: 1, playerId: playerId }) }}" class="btn btn-secondary">
+            <a href="{{ returnPath }}" class="btn btn-secondary">
                 {{ return }}
             </a>
             <button type="submit" class="btn btn-primary">{{ next }}</button>

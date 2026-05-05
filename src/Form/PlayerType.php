@@ -103,6 +103,7 @@ class PlayerType extends AbstractType
                 ],
             ])
             ->add('phone_number', TextType::class, [
+                'label' => 'Téléphone',
                 'required' => false,
                 'constraints' => [
                     new Length(

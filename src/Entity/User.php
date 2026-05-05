@@ -181,9 +181,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPhone(?string $phone): static
     {
+        if ($phone !== null) {
+            $phone = preg_replace('/\D/', '', $phone);
+        }
+
         $this->phone = $phone;
 
         return $this;
+    }
+
+    public function getFormattedPhone(): ?string
+    {
+        if ($this->phone === null) {
+            return null;
+        }
+
+        return trim(chunk_split($this->phone, 2, ' '));
     }
 
     /**

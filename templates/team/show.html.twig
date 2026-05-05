@@ -5,8 +5,9 @@
         title: "Fiche de l'équipe",
         backPath: path('team_index'),
         img: '←',
-        
-        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit">'
+        actionPath: path('team_edit', { id: team.id }),
+        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit" class="dashboard-topbar_cta-img">',
+        actionText: 'Modifier'
     } %}
 {% endblock %}
 {% block body %}
@@ -14,14 +15,14 @@
     <div class="player-profil__header">
         <div class="player-profil__essentials">
             <h3 class="player-profil__title">{{ team.name }}</h3>
-            <p class="player-profil__age">{{ team.category }}</p>
+            <p class="player-profil__age">{{ team.category.name }} ( {{ team.category.minAge }} ans - {{ team.category.maxAge }} ans )</p>
         </div>
     </div>
     
     <main class="dashboard-main">
         <section class="dashboard-card">
 
-            {# {% if players %} #}
+            {% if team.players is not empty %}
 
                 <ul class="card-list">
 
@@ -34,7 +35,7 @@
                                 </div>
                                 <div>
                                     <h3 class="card-list__title">{{ player.firstname }} {{ player.lastname }}</h3>
-                                    <p class="card-list__description"><span>{{ player.team }}</span> · <span>poste</span> · <span>#{{ player.number }}</span></p>
+                                    <p class="card-list__description"><span>{{ player.team.name }}</span> · <span>poste</span> · <span>#{{ player.number }}</span></p>
                                 </div>
                                 <div>
                                 
@@ -46,11 +47,11 @@
 
                 </ul>
             
-            {# {% else %} #}
+            {% else %}
 
                 <p class="empty-state">Aucun joueur enregistré dans cette équipe - Commencé l'enregistrement</p>
             
-            {# {% endif %} #}
+            {% endif %}
 
         </section>            
     </main>

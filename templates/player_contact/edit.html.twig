@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Contact{% endblock %}
+
+{% block header %}
+<div class="player-create__wrapper">
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Nouveau Contact',
+        backPath: path('player_show', {'id' : player.id }),
+        img: '✕'
+    } %}
+{% endblock %}
+{% block body %}
+    <main class="player-create">
+
+        {% include "player/forms/_createContact.html.twig" with {
+            newContactForm: newContactForm,
+            newRelationForm: newRelationForm,
+            formAction: path('player_contact_edit', { player: player.id, relation: relation.id }),
+            returnPath: path('player_show', { id: player.id }),
+            next: 'Valider',
+            return: 'Annuler'
+        }%}
+
+    </main>
+</div>
+{% endblock %}
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

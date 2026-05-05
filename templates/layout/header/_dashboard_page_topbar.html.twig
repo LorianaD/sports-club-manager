@@ -8,11 +8,23 @@
         <h2 class="dashboard-topbar_title">{{ title }}</h2>
     </div>
 
+    <div class="dashboard-topbar_action">
+        {% if actionPath is defined %}
+            <a href="{{ actionPath }}" class="dashboard-topbar_cta">
+                {{ actionLabel|default('+')|raw }}
 
-    {% if actionPath is defined %}
-        <a href="{{ actionPath }}" class="dashboard-topbar_cta">
-            {{ actionLabel|default('+')|raw }}
-        </a>
-    {% endif %}
-    
+                {% if actionText is defined %}
+                    <span>{{ actionText }}</span>
+                {% endif %}
+            </a>
+        {% endif %}
+
+        {% if deletePath is defined %}
+            {% include "partials/_delete.html.twig" with {
+                pathAction: deletePath,
+                id: id
+            } %}
+        {% endif %}
+    </div>
+
 </header>

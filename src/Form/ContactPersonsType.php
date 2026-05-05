@@ -57,7 +57,7 @@ class ContactPersonsType extends AbstractType
                 ],
             ])
             ->add('pc', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new Length(
                         min: 4,
@@ -70,7 +70,7 @@ class ContactPersonsType extends AbstractType
                 ],
             ])
             ->add('city', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new Length(
                         min: 2,

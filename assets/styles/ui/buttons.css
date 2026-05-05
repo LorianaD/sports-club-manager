@@ -73,6 +73,41 @@
 }
 
 .cta-edit {
-    width: 30px;
-    height: 30px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--sb-yellow);
+    font-size: 0.75em;
+    font-weight: 600;
+    text-decoration: none;
+    width: 100%;
+}
+
+.cta-edit__img {
+    width: 16px;
+    height: 16px;
+}
+
+.cta-delete {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--sb-red);
+    font-size: 0.75em;
+    font-weight: 600;
+    text-decoration: none;
+    width: 100%;
+}
+
+.cta-delete__img {
+    width: 16px;
+    height: 16px;
 }

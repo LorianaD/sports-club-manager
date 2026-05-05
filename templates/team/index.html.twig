@@ -5,7 +5,8 @@
 {% block header %}
     {% include "layout/header/_dashboard_page_topbar.html.twig" with {
         title: 'Team',
-        actionPath: path('team_new')
+        actionPath: path('team_new'),
+        actionLabel: '+'
     } %}
 {% endblock %}
 
@@ -21,9 +22,13 @@
                             <a class="card-list__link" href="{{ path('team_show', { 'id' : team.id }) }}">
                                 <div>
                                     <h3 class="card-list__title">{{ team.name }}</h3>
-                                    <p class="card-list__description"><span>{{ team.category }}</span></p>
+                                    <p class="card-list__description"><span>{{ team.category.name }}</span></p>
                                 </div>
                             </a>
+                            {% include "partials/_delete.html.twig" with {
+                                pathAction: path("team_delete", { id: team.id }),
+                                id: team.id
+                            } %}
                         </li>
 
                     {% endfor %}

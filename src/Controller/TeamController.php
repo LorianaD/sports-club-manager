@@ -50,10 +50,40 @@ final class TeamController extends AbstractController
         $id = $team->getId();
         $team = $teamRepository->findTeamById($id);
 
-
         return $this->render('team/show.html.twig', [
             'team' => $team,
         ]);
+    }
+
+    #[Route('/edit/{id}', name: 'team_edit', methods: ['GET' , 'POST'])]
+    public function edit(Request $request, Team $team, EntityManagerInterface $em): Response
+    {
+        $formTeam = $this->createForm(TeamType::class, $team);
+        $formTeam->handleRequest($request);
+
+        if ($formTeam->isSubmitted() && $formTeam->isValid()) {
+            $em->persist($team);
+            $em->flush();
+
+            return $this->redirectToRoute('team_show', array(
+                'id' => $team->getId(),
+            ));
+        }
+
+        return $this->render('team/edit.html.twig', [
+            'formTeam' => $formTeam,
+        ]);
+    }
+
+    #[Route('/{id}/delete', name: 'team_delete', methods: ['POST'])]
+    public function delete(EntityManagerInterface $em, Team $team, Request $request)
+    {
+        if ($this->isCsrfTokenValid('delete' . $team->getId(), $request->request->get('_token'))) {
+            $em->remove($team);
+            $em->flush();
+
+            return $this->redirectToRoute('team_index');
+        }
     }
 
 }
