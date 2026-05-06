@@ -1,0 +1,26 @@
+{% set sanctionType = type|lower %}
+
+{% if 'rouge' in sanctionType %}
+
+    {% set cardClass = 'sanction-card-red' %}
+    {% set cardLetter = 'R' %}
+
+{% elseif 'jaune' in sanctionType %}
+    {% set cardClass = 'sanction-card-yellow' %}
+    {% set cardLetter = 'J' %}
+
+{% elseif 'blanc' in sanctionType %}
+
+    {% set cardClass = 'sanction-card-white' %}
+    {% set cardLetter = 'B' %}
+
+{% else %}
+
+    {% set cardClass = 'sanction-card-dark' %}
+    {% set cardLetter = '!' %}
+
+{% endif %}
+
+<div class="sanction-card {{ cardClass }} {{ large|default(false) ? 'sanction-card-large' : '' }}">
+    {{ cardLetter }}
+</div>

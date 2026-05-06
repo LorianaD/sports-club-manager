@@ -7,7 +7,9 @@
         img: '←',
         actionPath: path('player_edit', { id: player.id }),
         actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit" class="dashboard-topbar_cta-img">',
-        actionText: 'Modifier'
+        actionText: 'Modifier',
+        deletePath: path('player_delete', { id: player.id }),
+        id: player.id
     } %}
 {% endblock %}
 {% block body %}

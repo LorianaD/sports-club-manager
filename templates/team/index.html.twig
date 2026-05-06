@@ -25,10 +25,10 @@
                                     <p class="card-list__description"><span>{{ team.category.name }}</span></p>
                                 </div>
                             </a>
-                            {% include "partials/_delete.html.twig" with {
+                            {# {% include "partials/_delete.html.twig" with {
                                 pathAction: path("team_delete", { id: team.id }),
                                 id: team.id
-                            } %}
+                            } %} #}
                         </li>
 
                     {% endfor %}

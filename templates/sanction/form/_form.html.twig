@@ -1,0 +1,34 @@
+{{ form_start(formName, { attr: { class: 'player-create__form' } }) }}
+    <div class="player-create_card">
+        <section class="player-create__section">
+            <div class="player-create__field">
+                {{ form_label(formName.type, "Type de sanction", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.type, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.create_at, "Date et heures", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.create_at, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.reason, "Raison", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.reason, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.match_context, "événement", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.match_context, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.player, "Joueur", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.player, { attr: { class: 'form-body_input' } }) }}
+            </div>
+        </section>
+        <div class="player-create_actions">
+            <a href="{{ returnPath }}" class="btn btn-secondary">
+                Annuler
+            </a>
+            <button type="submit" class="btn btn-primary">
+                Valider
+            </a>
+        </div>
+    </div>
+{{ form_end(formName) }}

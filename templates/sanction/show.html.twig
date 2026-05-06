@@ -1,0 +1,77 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: "Fiche de la sanction",
+        backPath: path('sanction_index'),
+        img: '←',
+        actionPath: path('sanction_edit', { id: sanction.id }),
+        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit" class="dashboard-topbar_cta-img">',
+        actionText: 'Modifier',
+        deletePath: path('sanction_delete', { id: sanction.id }),
+        id: sanction.id
+    } %}
+{% endblock %}
+{% block body %}
+    <main class="dashboard-main">
+        <section class="sanction-show">
+
+            <div class="sanction-show__hero">
+                {% include 'sanction/partials/_sanction_card.html.twig' with {
+                    type: sanction.type,
+                    large: true
+                } %}
+
+                <div class="sanction-show__header">
+                    <span class="sanction-show__label">Sanction</span>
+                    <h3 class="sanction-show__title">
+                        {{ sanction.player.firstname }} {{ sanction.player.lastname }}
+                    </h3>
+                    <span class="sanction-show__badge">
+                        {{ sanction.type }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="sanction-show__content">
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Joueur</span>
+                    <span class="sanction-show__value">
+                        {{ sanction.player.firstname }} {{ sanction.player.lastname }}
+                    </span>
+                </div>
+
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Type de sanction</span>
+                    <span class="sanction-show__value">{{ sanction.type }}</span>
+                </div>
+
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Date</span>
+                    <span class="sanction-show__value">
+                        {{ sanction.createAt|date('d/m/Y à H:i') }}
+                    </span>
+                </div>
+
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Événement</span>
+                    <span class="sanction-show__value">
+                        {{ sanction.matchContext|default('Non renseigné') }}
+                    </span>
+                </div>
+
+                <div class="sanction-show__reason">
+                    <span class="sanction-show__name">Raison</span>
+                    <p class="sanction-show__text">
+                        {{ sanction.reason|default('Aucune raison renseignée') }}
+                    </p>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

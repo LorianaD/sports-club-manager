@@ -15,7 +15,7 @@
 
         {{ form_start(newTeamForm, { attr: { class: 'player-create__form' } }) }}
             <div class="player-create_card">
-                <section>
+                <section class="player-create__section">
                     <div class="player-create__field">
                         {{ form_label(newTeamForm.name, "Nom de l'équipe", { label_attr: { class: 'form-body_label' } }) }}
                         {{ form_widget(newTeamForm.name, { attr: { class: 'form-body_input' } }) }}

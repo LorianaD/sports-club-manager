@@ -22,7 +22,8 @@
         {% if deletePath is defined %}
             {% include "partials/_delete.html.twig" with {
                 pathAction: deletePath,
-                id: id
+                id: id,
+                className: 'cta-delete--topbar',
             } %}
         {% endif %}
     </div>

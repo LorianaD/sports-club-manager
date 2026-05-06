@@ -107,14 +107,20 @@
     color: var(--sb-white);
 }
 
+.dashboard-topbar_action {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .dashboard-topbar_cta {
     color: var(--sb-yellow);
-    font-size: 16px;
+    font-size: 0.75em;
     display: flex;
     align-items: center;
     gap: 6px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     padding: 6px 10px;
@@ -124,4 +130,8 @@
     width: 16px;
     height: 16px;
     object-fit: contain;
+}
+
+.dashboard-topbar_cta:hover {
+    background-color: rgba(255, 255, 255, 0.28);
 }

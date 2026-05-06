@@ -1,0 +1,22 @@
+{{ form_start(formName, { attr: { class: 'player-create__form' } }) }}
+    <div class="player-create_card">
+        <section class="player-create__section">
+            <div class="player-create__field">
+                {{ form_label(formName.name, "Nom de l'équipe", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.name, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.category, "Categorie", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.category, { attr: { class: 'form-body_input' } }) }}
+            </div>
+        </section>
+        <div class="player-create_actions">
+            <a href="{{ pathAction }}" class="btn btn-secondary">
+                Annulé
+            </a>
+            <button type="submit" class="btn btn-primary">
+                Validé
+            </a>
+        </div>
+    </div>
+{{ form_end(formName) }}

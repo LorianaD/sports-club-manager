@@ -16,28 +16,25 @@ class SanctionRepository extends ServiceEntityRepository
         parent::__construct($registry, Sanction::class);
     }
 
-    //    /**
-    //     * @return Sanction[] Returns an array of Sanction objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('s.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findAllSanction()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('s')
+            ->getQuery()
+            ->getResult();
+        
+        return $qb;
+    }
 
-    //    public function findOneBySomeField($value): ?Sanction
-    //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findSanctionById(int $id)
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('s')
+            ->where('s.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+        
+        return $qb;
+    }
 }

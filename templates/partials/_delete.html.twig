@@ -1,6 +1,6 @@
 <form action="{{ pathAction }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ id) }}">
-    <button type="submit" class="cta-delete">
+    <button type="submit" class="cta-delete {{ className|default('') }}">
         <img src="{{ asset('images/icons/delete.png') }}" alt="supprimer" class="cta-delete__img">
         Supprimer
     </button>
