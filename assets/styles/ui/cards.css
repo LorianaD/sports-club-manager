@@ -21,7 +21,7 @@
 
 .card-list__item {
     display: flex;
-    gap: 10px;
+    /* gap: 10px; */
     padding: 12px 14px;
     border-bottom: 0.5px solid #f0f0f0;
     overflow: hidden;
@@ -29,7 +29,6 @@
     border-radius: 6px;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
 }
 
 .card-list__item:hover {

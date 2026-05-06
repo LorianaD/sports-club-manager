@@ -1,0 +1,23 @@
+{% set statusLabel = status|lower %}
+
+{% if 'en attente' in statusLabel %}
+
+    {% set badgeClass = 'badge-yellow' %}
+
+{% elseif 'justifiée' in statusLabel %}
+
+    {% set badgeClass = 'badge-ok' %}
+
+{% elseif 'injustifiée' in statusLabel %}
+
+    {% set badgeClass = 'badge-red' %}
+
+{% else %}
+
+    {% set badgeClass = 'badge-neutral' %}
+
+{% endif %}
+
+<div class="badge {{ badgeClass }}">
+    {{ status }}
+</div>

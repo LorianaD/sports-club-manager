@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle absence{% endblock %}
+
+{% block header %}
+<div class="player-create__wrapper">
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Nouvelle absence',
+        backPath: path('attendance_index'),
+        img: '✕'
+    } %}
+{% endblock %}
+{% block body %}
+    <main class="player-create">
+
+        {% include "attendance/form/_form.html.twig" with {
+            formName: formNewAttendance,
+            returnPath: path('attendance_index'),
+        } %}
+
+    </main>
+</div>
+{% endblock %}
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

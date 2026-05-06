@@ -1,20 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AttendanceController!{% endblock %}
+{% block title %}Absence{% endblock %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Gestion des absences',
+        actionPath: path('attendance_new'),
+        actionLabel: '+'
+    } %}
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <main class="dashboard-main">
+        <div class="">
+            {# STATS #}
+        </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <section class="dashboard-card">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/Loriana/documents/developpement_web/projets/09-SPORTS_CLUB_MANAGER/sports-club-manager/src/Controller/AttendanceController.php</code></li>
-        <li>Your template at <code>/Users/Loriana/documents/developpement_web/projets/09-SPORTS_CLUB_MANAGER/sports-club-manager/templates/attendance/index.html.twig</code></li>
-    </ul>
-</div>
+            {% if attendances %}
+
+                <ul class="card-list">
+
+                    {% for attendance in attendances %}
+
+                        <li class="card-list__item">
+                            <a class="card-list__link sanction-list__link" href="{{ path('attendance_show', { 'id' : attendance.id }) }}">
+                                <div class="player-avatar">
+                                    {{ attendance.player.firstname|slice(0,1) }}{{ attendance.player.lastname|slice(0,1) }}
+                                </div>
+                                <div class="sanction-list__info">
+                                    <h3 class="card-list__title">{{ attendance.player.firstname }} {{ attendance.player.lastname }}</h3>
+                                    <p class="card-list__description">
+                                        <span>{{ attendance.reason }}</span> • <span>{{ attendance.createAt|date('d/m') }}</span>
+                                    </p>
+                                </div>
+                            </a>
+                            <div>
+                                
+                                {% include "attendance/partials/_attendance_badge.html.twig" with {
+                                    status: attendance.AttendanceStatus.label
+                                } %}
+                                
+                            </div>
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+            
+            {% else %}
+
+                <p class="empty-state">Aucun joueur enregistré - Commencé l'enregistrement</p>
+            
+            {% endif %}
+            
+        </section>
+        
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
 {% endblock %}

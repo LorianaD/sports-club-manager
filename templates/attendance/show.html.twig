@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: "Fiche de la absence",
+        backPath: path('attendance_index'),
+        img: '←',
+        actionPath: path('attendance_edit', { id: attendance.id }),
+        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit" class="dashboard-topbar_cta-img">',
+        actionText: 'Modifier',
+        deletePath: path('attendance_delete', { id: attendance.id }),
+        id: attendance.id
+    } %}
+{% endblock %}
+{% block body %}
+    <main class="dashboard-main">
+        <section class="sanction-show">
+
+            <div class="sanction-show__hero">
+                
+
+                <div class="sanction-show__header">
+                    <span class="sanction-show__label">Absence</span>
+                    <h3 class="sanction-show__title">
+                        {{ attendance.player.firstname }} {{ attendance.player.lastname }}
+                    </h3>
+                    <span class="">
+                        {% include "attendance/partials/_attendance_badge.html.twig" with {
+                            status: attendance.AttendanceStatus.label
+                        } %}
+                    </span>
+                </div>
+            </div>
+
+            <div class="sanction-show__content">
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Joueur</span>
+                    <span class="sanction-show__value">
+                        {{ attendance.player.firstname }} {{ attendance.player.lastname }}
+                    </span>
+                </div>
+
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Raison</span>
+                    <span class="sanction-show__value">{{ attendance.reason }}</span>
+                </div>
+
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Date</span>
+                    <span class="sanction-show__value">
+                        {{ attendance.createAt|date('d/m/Y à H:i') }}
+                    </span>
+                </div>
+
+                {# <div class="sanction-show__row">
+                    <span class="sanction-show__name">Événement</span>
+                    <span class="sanction-show__value"> #}
+                        {# {{ attendance.matchContext|default('Non renseigné') }} #}
+                    {# </span>
+                </div> #}
+
+                <div class="sanction-show__reason">
+                    <span class="sanction-show__name">Commentaire</span>
+                    <p class="sanction-show__text">
+                        {{ attendance.comment|default('Aucune raison renseignée') }}
+                    </p>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}
