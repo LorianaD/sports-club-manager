@@ -28,6 +28,8 @@
     transition: background 0.15s;
     border-radius: 6px;
     align-items: center;
+    justify-content: space-between;
+    gap: 30px;
 }
 
 .card-list__item:hover {

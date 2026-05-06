@@ -35,6 +35,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: 100%;
 }
 
 .form-body_label {
@@ -60,6 +61,13 @@
     width: 100%;
 }
 
+.form-body_group-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+}
+
 .form-body_input:focus {
     border-color: var(--sb-red);
     box-shadow: var(--sb-focus-ring);
@@ -71,6 +79,10 @@
 
 .form__input::placeholder {
     color: var(--sb-gray-light);
+}
+
+.form-body_input-agreeTerm {
+
 }
 
 /***********************

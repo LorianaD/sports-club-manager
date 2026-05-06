@@ -30,6 +30,8 @@ final class MoreController extends AbstractController
         ]);
     }
 
+    // CREATE
+
     #[Route('/newCategory', name: 'more_newCategory', methods:['GET' , 'POST'])]
     public function newCategory(Request $request, EntityManagerInterface $em): Response
     {
@@ -74,6 +76,8 @@ final class MoreController extends AbstractController
         ]);
     }
 
+    // UPDATE
+
     #[Route('/editCategory/{id}', name: 'more_editCategory', methods:['GET' , 'POST'])]
     public function editCategory(Category $category, Request $request, EntityManagerInterface $em): Response
     {
@@ -112,5 +116,29 @@ final class MoreController extends AbstractController
         return $this->render('more/form/position/editPosition.html.twig', [
             'editPositionForm' => $editPositionForm,
         ]);
-    }    
+    }
+
+    // DELETE
+
+    #[Route('/{id}/deletePosition', name: 'more_deletePosition', methods:['POST'])]
+    public function deletePosition(Position $position, Request $request, EntityManagerInterface $em)
+    {
+        if ($this->isCsrfTokenValid('delete' . $position->getId(), $request->request->get('_token'))) {
+            $em->remove($position);
+            $em->flush();
+
+            return $this->redirectToRoute('more_index');
+        }
+    }
+
+    #[Route('/{id}/deleteCategory', name: 'more_deleteCategory', methods:['POST'])]
+    public function deleteCategory(Category $category, Request $request, EntityManagerInterface $em)
+    {
+        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
+            $em->remove($category);
+            $em->flush();
+
+            return $this->redirectToRoute('more_index');
+        }
+    }
 }

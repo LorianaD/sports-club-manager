@@ -56,13 +56,14 @@
                         {{ form_widget(registrationForm.plainPassword, { attr: { class: 'form-body_input' } }) }}
                     </div>
 
-                    <div class="form-body_group">
-                        {{ form_row(registrationForm.agreeTerms) }}
+                    <div class="form-body_group-row">
+                        {{ form_label(registrationForm.agreeTerms, 'Accepter les conditions générales',{ label_attr: { class: 'form-body_label' } }) }}
+                        {{ form_widget(registrationForm.agreeTerms, { attr: { class: 'form-body_input-agreeTerm' } }) }}
                     </div>
 
                 </div>
 
-                <button class="btn btn-principal">Créer le compte</button>
+                <button class="btn btn-primary">Créer le compte</button>
 
             {{ form_end(registrationForm) }}
 

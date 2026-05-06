@@ -37,7 +37,16 @@
                                     <td class="table__title">{{ category.name }}</td>
                                     <td>{{ category.minAge }} ans</td>
                                     <td>{{ category.maxAge }} ans</td>
-                                    <td><a href="{{ path('more_editCategory', { 'id' : category.id }) }}">Modifié</a></td>
+                                    <td>
+                                        <a href="{{ path('more_editCategory', { 'id' : category.id }) }}" class="cta-edit">
+                                            <img src="{{ asset('images/icons/edit.png') }}" alt="modifier" class="cta-edit__img">
+                                            <span>Modifier</span>
+                                        </a>
+                                        {% include "partials/_delete.html.twig" with {
+                                            pathAction: path("more_deleteCategory", { id: category.id }),
+                                            id: category.id
+                                        } %}
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -67,7 +76,16 @@
                     {% for position in positions %}
                         <li class="card-list__item">
                             <span class="card-list__title">{{ position.name }}</span>
-                            <a href="{{ path('more_editPosition', { 'id' : position.id }) }}">Modifié</a>
+                            <div class="cta-box">
+                                <a href="{{ path('more_editPosition', { 'id' : position.id }) }}" class="cta-edit">
+                                    <img src="{{ asset('images/icons/edit.png') }}" alt="modifier" class="cta-edit__img">
+                                    <span>Modifier</span>
+                                </a>
+                                {% include "partials/_delete.html.twig" with {
+                                    pathAction: path("more_deletePosition", { id: position.id }),
+                                    id: position.id
+                                } %}
+                            </div> 
                         </li>
                     {% endfor %}
 
