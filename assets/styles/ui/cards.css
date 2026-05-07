@@ -281,3 +281,8 @@
     line-height: 1.5;
     color: var(--sb-dark);
 }
+
+.sanction-show__coach {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}

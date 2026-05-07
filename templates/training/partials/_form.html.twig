@@ -1,0 +1,38 @@
+{{ form_start(formName, { attr: { class: 'player-create__form' } }) }}
+    <div class="player-create_card">
+        <section class="player-create__section">
+            <div class="player-create__field">
+                {{ form_label(formName.name, "Titre", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.name, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.date, "Date", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.date, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.time, "Heure", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.time, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.location, "Lieu", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.location, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.coach, "Coach", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.coach, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.description, "Description", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.description, { attr: { class: 'form-body_input' } }) }}
+            </div>
+        </section>
+        <div class="player-create_actions">
+            <a href="{{ returnPath }}" class="btn btn-secondary">
+                Annuler
+            </a>
+            <button type="submit" class="btn btn-primary">
+                Valider
+            </button>
+        </div>
+    </div>
+{{ form_end(formName) }}

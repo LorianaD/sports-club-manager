@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle sanction{% endblock %}
+
+{% block header %}
+<div class="player-create__wrapper">
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Nouveaux entrainement',
+        backPath: path('training_index'),
+        img: '✕'
+    } %}
+{% endblock %}
+{% block body %}
+    <main class="player-create">
+
+        {% include "training/partials/_form.html.twig" with {
+            formName: newTrainingForm,
+            returnPath: path('training_index'),
+        } %}
+
+    </main>
+</div>
+{% endblock %}
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

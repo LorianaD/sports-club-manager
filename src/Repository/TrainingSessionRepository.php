@@ -16,14 +16,19 @@ class TrainingSessionRepository extends ServiceEntityRepository
         parent::__construct($registry, TrainingSession::class);
     }
 
-    public function findAllTraining()
+    public function findAllTraining(?int $limit = null)
     {
         $qb = $this->createQueryBuilder('ts')
-            ->select('ts')
+            ->orderBy('ts.date', 'DESC')
+            ->addOrderBy('ts.time', 'DESC');
+
+            if ($limit !== null) {
+                $qb->setMaxResults($limit);
+            }
+        
+        return $qb
             ->getQuery()
             ->getResult();
-        
-        return $qb;
     }
 
     public function findTrainingById(int $id)

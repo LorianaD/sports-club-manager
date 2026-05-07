@@ -14,16 +14,22 @@
         <section class="dashboard-card">
             <div class="dashboard-card-header">
                 <h2 class="dashboard-card-title">Entrainements</h2>
-                <a href="{{ path('planning_index') }}" class="link-secondary">Voir tous</a>
+                <a href="{{ path('training_index') }}" class="link-secondary">Voir tous</a>
             </div>
             {% if trainings %}
                 <ul>
                     {% for training in trainings %}
                         <li class="card-list__item">
-                            <a class="card-list__link" href="{{ path('player_show', { 'id' : training.id }) }}">
+                            <a class="card-list__link" href="{{ path('training_show', { 'id' : training.id }) }}">
                                 <div>
                                     <h3 class="card-list__title">{{ training.name }}</h3>
-                                    <p class="card-list__description"><span>{{ training.date }}</span> · <span>{{ training.time }}</span></p>
+                                    <p class="card-list__description">
+                                        <span>{{ training.date|date('d/m/Y') }}</span>
+                                        <span> · </span>
+                                        <span>{{ training.time|date('H:i') }}</span>
+                                        <span> · </span>
+                                        <span>{{ training.location|default('Lieu non renseigné') }}</span>
+                                    </p>
                                 </div>
                                 <div>
                                 
@@ -40,16 +46,22 @@
         <section class="dashboard-card">
             <div class="dashboard-card-header">
                 <h2 class="dashboard-card-title">Evenements</h2>
-                <a href="{{ path('planning_index') }}" class="link-secondary">Voir tous</a>
+                <a href="{{ path('events_index') }}" class="link-secondary">Voir tous</a>
             </div>
             {% if events %}
                 <ul>
                     {% for event in events %}
                         <li class="card-list__item">
-                            <a class="card-list__link" href="{{ path('player_show', { 'id' : event.id }) }}">
+                            <a class="card-list__link" href="{{ path('events_show', { 'id' : event.id }) }}">
                                 <div>
                                     <h3 class="card-list__title">{{ event.name }}</h3>
-                                    <p class="card-list__description"><span>{{ event.date }} · <span>{{ event.time }}</span></p>
+                                    <p class="card-list__description">
+                                        <span>{{ event.type }}</span>
+                                        <span> · </span>
+                                        <span>{{ event.date|date('d/m/Y à H:i') }}</span>
+                                        <span> · </span>
+                                        <span>{{ event.location }}</span>
+                                    </p>
                                 </div>
                                 <div>
                                 

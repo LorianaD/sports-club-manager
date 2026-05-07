@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entrainements{% endblock %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Gestion des entrainements',
+        actionPath: path('training_new'),
+        actionLabel: '+',
+        backPath: path('planning_index'),
+        img: '←',
+    } %}
+{% endblock %}
+
+{% block body %}
+    <main class="dashboard-main">
+        <div class="">
+            {# STATS #}
+        </div>
+
+        <section class="dashboard-card">
+
+            {% if trainings %}
+
+                <ul class="card-list">
+
+                    {% for training in trainings %}
+
+                        <li class="card-list__item">
+                            <a class="card-list__link" href="{{ path('training_show', { 'id' : training.id }) }}">
+                                <div>
+                                    <h3 class="card-list__title">{{ training.name }}</h3>
+                                    <p class="card-list__description">
+                                        <span>{{ training.date|date('d/m/Y') }}</span>
+                                        <span> · </span>
+                                        <span>{{ training.time|date('H:i') }}</span>
+                                        <span> · </span>
+                                        <span>{{ training.location|default('Lieu non renseigné') }}</span>
+                                    </p>
+                                </div>
+                                <div>
+                                
+                                </div>
+                            </a>
+                            {# <div>
+                                
+                                {% include "training/partials/_training_badge.html.twig" with {
+                                    status: training.trainingStatus.label
+                                } %}
+                                
+                            </div> #}
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+            
+            {% else %}
+
+                <p class="empty-state">Aucun entrainement enregistré - Commencé l'enregistrement</p>
+            
+            {% endif %}
+            
+        </section>
+        
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'entraînement{% endblock %}
+
+{% block header %}
+<div class="player-create__wrapper">
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: "Modification de l' absence",
+        backPath: path('training_show', {
+            id: training.id,
+        }),
+        img: '✕'
+    } %}
+{% endblock %}
+{% block body %}
+    <main class="player-create">
+
+        {% include "training/partials/_form.html.twig" with {
+            formName: editTrainingForm,
+            returnPath: path('training_show', {
+                id: training.id
+            }),
+        } %}
+
+    </main>
+</div>
+{% endblock %}
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: "Fiche de l'entrainement",
+        backPath: path('training_index'),
+        img: '←',
+        actionPath: path('training_edit', { id: training.id }),
+        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit" class="dashboard-topbar_cta-img">',
+        actionText: 'Modifier',
+        deletePath: path('training_delete', { id: training.id }),
+        id: training.id
+    } %}
+{% endblock %}
+{% block body %}
+    <main class="dashboard-main">
+        <section class="sanction-show">
+
+            <div class="sanction-show__hero">
+                
+                <div class="sanction-show__header">
+                    <span class="sanction-show__label">Entrainement</span>
+                    <h3 class="sanction-show__title">
+                        {{ training.name }}
+                    </h3>
+                    <span class="sanction-show__coach">
+                        {% if training.coach|length > 0 %}
+                            {{ training.coach|first.firstname }} {{ training.coach|first.lastname }}
+                        {% else %}
+                            Aucun entraîneur assigné
+                        {% endif %}
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="sanction-show__content">
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Entraineurs</span>
+                    <span class="sanction-show__value">
+                        {% for coach in training.coach %}
+                            {{ coach.firstname }} {{ coach.lastname }}
+                        {% endfor %}
+                    </span>
+                </div>
+
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Date</span>
+                    <span class="sanction-show__value">{{ training.date|date('d/m/Y') }}</span>
+                </div>
+
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Heure</span>
+                    <span class="sanction-show__value">
+                        {{ training.time|date('H:i') }}
+                    </span>
+                </div>
+
+                <div class="sanction-show__row">
+                    <span class="sanction-show__name">Lieu</span>
+                    <span class="sanction-show__value">
+                        {{ training.location|default('Aucune lieu encore renseignée') }}
+                    </span>
+                </div>                
+
+                <div class="sanction-show__reason">
+                    <span class="sanction-show__name">Note</span>
+                    <p class="sanction-show__text">
+                        {{ training.description }}
+                    </p>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

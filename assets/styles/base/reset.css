@@ -26,3 +26,7 @@ button {
     border: none;
     background: none;
 }
+
+body {
+    background-color: var(--sb-bg);
+}
