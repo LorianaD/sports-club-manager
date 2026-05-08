@@ -16,14 +16,20 @@ class TeamRepository extends ServiceEntityRepository
         parent::__construct($registry, Team::class);
     }
 
-    public function findAllTeam()
+    public function findAllTeam(?int $limit = null)
     {
         $qb = $this->createQueryBuilder('t')
-            ->select('t')
-            ->getQuery()
-            ->getResult();
+            ->leftJoin('t.category', 'c')
+            ->addSelect('c')
+            ->orderBy('c.min_age', 'ASC');
+
+            if ($limit !== null) {
+                $qb->setMaxResults($limit);
+            }
         
-        return $qb;
+        return $qb
+            ->getQuery()
+            ->getResult();        
     }
 
     public function findTeamById(int $id)

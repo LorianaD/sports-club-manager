@@ -16,14 +16,18 @@ class AttendanceRepository extends ServiceEntityRepository
         parent::__construct($registry, Attendance::class);
     }
 
-    public function findAllAttendance()
+    public function findAllAttendance(?int $limit = null)
     {
         $qb = $this->createQueryBuilder('a')
-            ->select('a')
+            ->orderBy('a.create_at', 'DESC');
+
+            if ($limit !== null) {
+                $qb->setMaxResults($limit);
+            }
+        
+        return $qb
             ->getQuery()
             ->getResult();
-        
-        return $qb;
     }
 
     public function findAttendanceById(int $id)

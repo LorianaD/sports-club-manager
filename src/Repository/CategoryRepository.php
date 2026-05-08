@@ -19,7 +19,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function findAllCategories()
     {
         $qb = $this->createQueryBuilder('c')
-            ->orderBy('c.min_age', 'DESC')
+            ->orderBy('c.min_age', 'ASC')
             ->getQuery()
             ->getResult();
         

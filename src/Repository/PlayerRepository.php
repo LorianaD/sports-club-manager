@@ -41,14 +41,18 @@ class PlayerRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    public function findAllPlayer()
+    public function findAllPlayer(?int $limit = null)
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p')
-            ->getQuery()
-            ->getResult();
+            ->orderBy('p.lastname', 'ASC');
+
+            if ($limit !== null) {
+                $qb->setMaxResults($limit);
+            }
         
-        return $qb;
+        return $qb
+            ->getQuery()
+            ->getResult();        
     }
 
     public function findPlayerById(int $id)

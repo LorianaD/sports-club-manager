@@ -17,7 +17,7 @@
     <div class="player-profil__header">
         <div class="player-profil__essentials">
             <h3 class="player-profil__title">{{ team.name }}</h3>
-            <p class="player-profil__age">{{ team.category.name }} ( {{ team.category.minAge }} ans - {{ team.category.maxAge }} ans )</p>
+            <p class="player-profil__age">{{ team.category.name|default('Aucune catégorie') }} ({{ team.category.minAge|default(' ') }} ans - {{ team.category.maxAge|default(' ') }} ans)</p>
         </div>
     </div>
     

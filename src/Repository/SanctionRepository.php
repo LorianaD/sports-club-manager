@@ -16,14 +16,18 @@ class SanctionRepository extends ServiceEntityRepository
         parent::__construct($registry, Sanction::class);
     }
 
-    public function findAllSanction()
+    public function findAllSanction(?int $limit = null)
     {
-        $qb = $this->createQueryBuilder('s')
-            ->select('s')
-            ->getQuery()
-            ->getResult();
+        $qb = $this->createQueryBuilder('s.date', 'DESC')
+            ->select('s');
+
+            if ($limit !== null) {
+                $qb->setMaxResults($limit);
+            }
         
-        return $qb;
+        return $qb
+            ->getQuery()
+            ->getResult();        
     }
 
     public function findSanctionById(int $id)

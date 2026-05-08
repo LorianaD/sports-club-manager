@@ -41,14 +41,18 @@ class ContactPersonsRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    public function findAllPersons()
+    public function findAllPersons(?int $limit = null)
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p')
+            ->orderBy('p.lastname', 'ASC');
+
+            if ($limit !== null) {
+                $qb->setMaxResults($limit);
+            }
+
+        return $qb
             ->getQuery()
-            ->getResult();
-        
-        return $qb;
+            ->getResult();        
     }
 
     public function findPersonById(int $id)
