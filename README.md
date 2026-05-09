@@ -216,11 +216,11 @@ symfony console make:form
 * [x] Cahier des charges
 * [x] MCD
 * [x] MLD
-* [ ] Entités Symfony
-* [ ] Player / Contact
-* [ ] Gestion absences
-* [ ] Gestion sanctions
-* [ ] Gestion matériel
+* [x] Entités Symfony
+* [x] Player / Contact
+* [x] Gestion absences
+* [x] Gestion sanctions
+* [x] Gestion matériel
 * [ ] Dashboard
 
 ---
