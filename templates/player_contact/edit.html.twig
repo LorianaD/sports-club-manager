@@ -3,7 +3,6 @@
 {% block title %}Nouveau Contact{% endblock %}
 
 {% block header %}
-<div class="player-create__wrapper">
     {% include "layout/header/_dashboard_page_topbar.html.twig" with {
         title: 'Nouveau Contact',
         backPath: path('player_show', {'id' : player.id }),
@@ -23,7 +22,6 @@
         }%}
 
     </main>
-</div>
 {% endblock %}
 {% block footer %}
     {% include "layout/dashboardFooter.html.twig" %}

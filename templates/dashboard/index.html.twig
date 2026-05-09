@@ -4,8 +4,8 @@
 
 {% block header %}
     {% include "layout/header/_dashboard_home_header.html.twig" with {
-        coachName: 'Coach Martin',
-        initials: 'CM'
+        coachName: app.user.firstname ~ " " ~ app.user.lastname|upper,
+        initials: (app.user.firstname|first ~ app.user.lastname|first)|upper,
     } %}
 {% endblock %}
 

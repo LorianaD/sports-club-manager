@@ -14,10 +14,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/more')]
+#[Route('/dashboard/more')]
 final class MoreController extends AbstractController
 {
-    #[Route('/', name: 'more_index', methods: ['GET'])]
+    #[Route('', name: 'more_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository, PositionRepository $positionRepository): Response
     {
 

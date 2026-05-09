@@ -84,7 +84,7 @@
 
 .dashboard-card {
     background: var(--sb-white);
-    border-radius: 8px;
+    border-radius: var(--sb-radius-md);
     padding: 20px;
 }
 
@@ -285,4 +285,10 @@
 .sanction-show__coach {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
+}
+
+.card-stats {
+    background-color: var(--sb-white);
+    padding: 14px;
+    border-radius: var(--sb-radius-lg);
 }

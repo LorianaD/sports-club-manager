@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teams{% endblock %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Nouveau matériel',
+        backPath: path('inventory_index'),
+        img: '✕'
+    } %}
+{% endblock %}
+
+{% block body %}
+    <main class="dashboard-main">
+        {% include "inventory/partials/_form.html.twig" with {
+            formName : formEditEquipment,
+            pathAction : path('inventory_show', {
+                id : equipment.id,
+            }),
+        } %}  
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

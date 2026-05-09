@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teams{% endblock %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: 'Inventaire',
+        actionPath: path('inventory_new'),
+        actionLabel: '+'
+    } %}
+{% endblock %}
+
+{% block body %}
+    <main class="dashboard-main">
+        <section class="dashboard-card">
+            <div class="dashboard-card-body">
+
+                {% if equipments %}
+
+                    <table class="table table--card">
+
+                        <thead>
+                            <tr>
+                                <th>Libellé</th>
+                                <th>Catégorie</th>
+                                <th>Stock</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for equipment in equipments %}
+                                <tr class="">
+                                        <td class="table__title">
+                                            <a href="{{ path('inventory_show', { 'id' : equipment.id } ) }}">
+                                                {{ equipment.name|capitalize }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('inventory_show', { 'id' : equipment.id } ) }}">
+                                                {% include "inventory/partials/_badge_category.html.twig" with {
+                                                    category: equipment.category
+                                                } %}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('inventory_show', { 'id' : equipment.id } ) }}">
+                                                {{ equipment.stock }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('inventory_show', { 'id' : equipment.id } ) }}">
+                                                {% include "inventory/partials/_badge_status.html.twig" with {
+                                                    status : equipment.status,
+                                                } %}
+                                            </a>
+                                        </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+
+                {% else %}
+
+                    <p class="empty-state">Aucune categories renseigné.</p>
+                
+                {% endif %}
+
+            </div>
+        </section>    
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

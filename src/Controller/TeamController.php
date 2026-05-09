@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/team')]
+#[Route('dashboard/team')]
 final class TeamController extends AbstractController
 {
-    #[Route('/', name: 'team_index', methods: ['GET'])]
+    #[Route('', name: 'team_index', methods: ['GET'])]
     public function index(TeamRepository $teamRepository): Response
     {
         $teams = $teamRepository->findAllTeam();

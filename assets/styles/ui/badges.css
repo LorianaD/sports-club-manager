@@ -51,6 +51,26 @@
 }
 
 .badge-neutral {
-    background: var(--sb-grey-light);
-    color: var(--sb-grey-mid);
+    background: var(--sb-gray-light);
+    color: var(--sb-gray-mid);
+}
+
+.badge-tech {
+    background: #E3F2FD;
+    color: #1565C0;
+}
+
+.badge-paper {
+    background: #F3E5F5;
+    color: #7B1FA2;
+}
+
+.badge-equipment {
+    background: #FFF3E0;
+    color: #E65100;
+}
+
+.badge-medical {
+    background: #FCE4EC;
+    color: #C2185B;
 }

@@ -1,10 +1,11 @@
 .dashboard-main {
-    min-height: 70vh;
-    padding: 14px 14px 30px 14px;
+    min-height: calc(100vh - var(--dashboard-footer-height));
+    padding: 14px;
     background-color: var(--sb-bg);
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding-bottom: calc(var(--dashboard-footer-height) + 24px);
 }
 
 /* Main content */
@@ -13,7 +14,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 70vh;
+    min-height: calc(100vh - var(--dashboard-footer-height));
 }
 
 /* Dashboard grid */

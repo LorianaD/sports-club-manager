@@ -18,8 +18,8 @@ class SanctionRepository extends ServiceEntityRepository
 
     public function findAllSanction(?int $limit = null)
     {
-        $qb = $this->createQueryBuilder('s.date', 'DESC')
-            ->select('s');
+        $qb = $this->createQueryBuilder('s')
+            ->orderBy('s.create_at', 'DESC');
 
             if ($limit !== null) {
                 $qb->setMaxResults($limit);
@@ -27,7 +27,7 @@ class SanctionRepository extends ServiceEntityRepository
         
         return $qb
             ->getQuery()
-            ->getResult();        
+            ->getResult();
     }
 
     public function findSanctionById(int $id)

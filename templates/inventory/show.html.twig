@@ -1,0 +1,73 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+    {% include "layout/header/_dashboard_page_topbar.html.twig" with {
+        title: equipment.name,
+        backPath: path('inventory_index'),
+        img: '←',
+        actionPath: path('inventory_edit', { id: equipment.id }),
+        actionLabel: '<img src="' ~ asset('images/icons/edit.png') ~ '" alt="edit" class="dashboard-topbar_cta-img">',
+        actionText: 'Modifier',
+        deletePath: path('inventory_delete', { id: equipment.id }),
+        id: equipment.id
+    } %}
+{% endblock %}
+
+{% block body %}
+    <main class="dashboard-main">
+        <section class="inventory-show">
+
+            <div class="inventory-show__hero">
+                <div class="inventory-show__header">
+                    <span class="inventory-show__category">
+                        {{ equipment.category|capitalize }}
+                    </span>
+
+                    <h3 class="inventory-show__title">
+                        {{ equipment.name }}
+                    </h3>
+
+                    {% include "inventory/partials/_badge_status.html.twig" with {
+                        status: equipment.status
+                    } %}
+                </div>
+            </div>
+
+            <div class="inventory-show__content">
+                <div class="inventory-show__row">
+                    <span class="inventory-show__name">Stock</span>
+                    <span class="inventory-show__value">
+                        {{ equipment.stock }}
+                    </span>
+                </div>
+
+                <div class="inventory-show__row">
+                    <span class="inventory-show__name">Prix unitaire</span>
+                    <span class="inventory-show__value">
+                        {{ equipment.unitPrice|number_format(2, ',', ' ') }} €
+                    </span>
+                </div>
+
+                {# <div class="inventory-show__row">
+                    <span class="inventory-show__name">Valeur totale</span>
+                    <span class="inventory-show__value">
+                        {{ (equipment.stock * equipment.unitPrice)|number_format(2, ',', ' ') }} €
+                    </span>
+                </div> #}
+
+                <div class="inventory-show__description">
+                    <span class="inventory-show__name">Description</span>
+
+                    <p class="inventory-show__text">
+                        {{ equipment.description|default('Aucune description renseignée') }}
+                    </p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/dashboardFooter.html.twig" %}
+{% endblock %}

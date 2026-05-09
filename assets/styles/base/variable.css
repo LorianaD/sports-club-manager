@@ -23,14 +23,17 @@
     /* Typographie */
     --sb-font:         system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-    /* Espacements */
+    /* Bordures */
     --sb-radius-sm:    6px;
-    --sb-radius-md:    10px;
-    --sb-radius-lg:    14px;
+    --sb-radius-md:    8px;
+    --sb-radius-lg:    16px;
     --sb-radius-xl:    20px;
 
     /* Ombres */
     --sb-shadow-sm:    0 1px 4px rgba(0, 0, 0, 0.06);
     --sb-shadow-md:    0 4px 16px rgba(0, 0, 0, 0.08);
     --sb-focus-ring:   0 0 0 3px rgba(192, 25, 42, 0.12);
+
+    /* Dimensions */
+    --dashboard-footer-height: 78px;
 }

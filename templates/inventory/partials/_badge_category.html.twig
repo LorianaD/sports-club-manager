@@ -1,0 +1,27 @@
+{% set categoryLabel = category|lower %}
+
+{% if 'high-tech' in categoryLabel %}
+
+    {% set badgeClass = 'badge-tech' %}
+
+{% elseif 'papeterie' in categoryLabel %}
+
+    {% set badgeClass = 'badge-paper' %}
+
+{% elseif 'equipement' in categoryLabel %}
+
+    {% set badgeClass = 'badge-equipment' %}
+
+{% elseif 'medical' in categoryLabel %}
+
+    {% set badgeClass = 'badge-medical' %}
+
+{% else %}
+
+    {% set badgeClass = 'badge-neutral' %}
+
+{% endif %}
+
+<div class="badge {{ badgeClass }}">
+    {{ category|capitalize }}
+</div>

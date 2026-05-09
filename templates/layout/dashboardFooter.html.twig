@@ -1,4 +1,3 @@
-{% extends "base.html.twig" %}
 {% block footer %}
     <footer class="footer-dashboard">
         <nav class="footer-dashboard__nav">
@@ -39,12 +38,12 @@
                 </span>
             </a>
 
-            <a class="footer-nav__item">
+            <a class="footer-nav__item" href="{{ path("inventory_index") }}">
                 <div class="footer-nav__icon">
                     <img src="{{asset('images/icons/equipment.png')}}" />
                 </div>
                 <span class="footer-nav__label">
-                    Matériel
+                    Inventaire
                 </span>
             </a>
 

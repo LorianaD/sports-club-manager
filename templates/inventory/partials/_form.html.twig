@@ -1,0 +1,41 @@
+{{ form_start(formName, { attr: { class: 'player-create__form' } }) }}
+    <div class="player-create_card">
+        <section class="player-create__section">
+            <div class="player-create__field">
+                {{ form_label(formName.name, "Libellé", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.name, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.category, "Categorie", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.category, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.stock, "Stock", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.stock, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.unit_price, "Prix unitaire", { label_attr: { class: 'form-body_label' } }) }}
+                <div class="form-body_input-wrapper">
+                    <span class="form-body_input-currency">€</span>
+                    {{ form_widget(formName.unit_price, { attr: { class: 'form-body_input form-body_input-price' } }) }}
+                </div>
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.status, "Statut", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.status, { attr: { class: 'form-body_input' } }) }}
+            </div>
+            <div class="player-create__field">
+                {{ form_label(formName.description, "Description", { label_attr: { class: 'form-body_label' } }) }}
+                {{ form_widget(formName.description, { attr: { class: 'form-body_input' } }) }}
+            </div>
+        </section>
+        <div class="player-create_actions">
+            <a href="{{ pathAction }}" class="btn btn-secondary">
+                Annulé
+            </a>
+            <button type="submit" class="btn btn-primary">
+                Validé
+            </a>
+        </div>
+    </div>
+{{ form_end(formName) }}

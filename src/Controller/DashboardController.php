@@ -8,12 +8,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/dashboard')]
 final class DashboardController extends AbstractController
 {
-    #[Route('/dashboard', name: 'user_dashboard')]
+    #[Route('', name: 'user_dashboard')]
     public function index(PlayerRepository $playerRepository, TeamRepository $teamRepository): Response
     {
-
+        $user = $this->getUser();
         
         $recentPlayers = $playerRepository->findBy( 
             [], 
@@ -30,6 +31,7 @@ final class DashboardController extends AbstractController
         return $this->render('dashboard/index.html.twig', [
             'recentPlayers' => $recentPlayers,
             'recentTeams' => $recentTeams,
+            'user' => $user,
         ]);
     }
 }

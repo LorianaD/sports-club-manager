@@ -1,0 +1,34 @@
+{% set statusKey = status|lower %}
+
+{% if statusKey == 'disponible' %}
+    {% set badgeClass = 'badge-ok' %}
+    {% set statusText = 'Disponible' %}
+
+{% elseif statusKey == 'commande' %}
+    {% set badgeClass = 'badge-yellow' %}
+    {% set statusText = 'Commandé' %}
+
+{% elseif statusKey == 'emprunte' %}
+    {% set badgeClass = 'badge-warning' %}
+    {% set statusText = 'Emprunté' %}
+
+{% elseif statusKey == 'endommage' %}
+    {% set badgeClass = 'badge-danger' %}
+    {% set statusText = 'Endommagé' %}
+
+{% elseif statusKey == 'en_cours_utilisation' %}
+    {% set badgeClass = 'badge-warning' %}
+    {% set statusText = 'En cours d’utilisation' %}
+
+{% elseif statusKey == 'perdu' %}
+    {% set badgeClass = 'badge-red' %}
+    {% set statusText = 'Perdu' %}
+
+{% else %}
+    {% set badgeClass = 'badge-neutral' %}
+    {% set statusText = status|default('Non renseigné') %}
+{% endif %}
+
+<div class="badge {{ badgeClass }}">
+    {{ statusText }}
+</div>

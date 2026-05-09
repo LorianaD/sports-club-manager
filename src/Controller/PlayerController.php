@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/dashboard/player')]
 final class PlayerController extends AbstractController
 {
-    #[Route('/', name: 'player_index', methods: ['GET'])]
+    #[Route('', name: 'player_index', methods: ['GET'])]
     public function index(PlayerRepository $playerRepository): Response
     {
 

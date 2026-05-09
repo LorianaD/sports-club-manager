@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/dashboard/planning')]
 final class PlanningController extends AbstractController
 {
-    #[Route('/', name: 'planning_index')]
+    #[Route('', name: 'planning_index')]
     public function index(TrainingSessionRepository $trainingSessionRepository, EventsRepository $eventsRepository): Response
     {
 
