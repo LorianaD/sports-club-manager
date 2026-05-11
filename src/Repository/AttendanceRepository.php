@@ -41,4 +41,26 @@ class AttendanceRepository extends ServiceEntityRepository
         
         return $qb;
     }
+
+    public function countByStatus(string $status): int
+    {
+        return $this->createQueryBuilder('a')
+            ->select('COUNT(a.id)')
+            ->join('a.status', 's')
+            ->andWhere('s.label = :status')
+            ->setParameter('status', $status)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countThisMonth(): int
+    {
+        return $this->createQueryBuilder('a')
+            ->select('COUNT(a.id)')
+            ->andWhere('a.create_at BETWEEN :start AND :end')
+            ->setParameter('start', new \DateTimeImmutable('first day of this month 00:00:00'))
+            ->setParameter('end', new \DateTimeImmutable('last day of this month 23:59:59'))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

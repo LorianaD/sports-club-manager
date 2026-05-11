@@ -25,7 +25,7 @@
 }
 
 .table--card {
-    margin-top: 16px;
+    /* margin-top: 16px; */
     background-color: var(--sb-white);
     border-radius: 12px;
     overflow: hidden;

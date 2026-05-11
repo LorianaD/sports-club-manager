@@ -86,6 +86,7 @@
     background: var(--sb-white);
     border-radius: var(--sb-radius-md);
     padding: 20px;
+    width: 100%;
 }
 
 .dashboard-card-header {
@@ -291,4 +292,15 @@
     background-color: var(--sb-white);
     padding: 14px;
     border-radius: var(--sb-radius-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-stats_number {
+    color: var(--sb-red);
+    font-size: 22px;
+}
+
+.card-stats_text {
+    color: var(--sb-gray);
 }

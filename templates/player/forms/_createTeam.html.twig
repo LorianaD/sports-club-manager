@@ -19,8 +19,22 @@
                 {{ form_widget(newTeamForm.number, { attr: { class: 'form-body_input', placeholder: '' } }) }}
             </div>
             <div class="player-create__field">
-                {{ form_label(newTeamForm.position, 'Poste (choix multiple)', { label_attr: { class: 'form-body_label' } }) }}
-                {{ form_widget(newTeamForm.position, { attr: { class: 'form-body_input'} }) }}
+                {{ form_label(newTeamForm.position, 'Poste (choix multiple)', {
+                    label_attr: { class: 'form-body_label' }
+                }) }}
+
+                <div class="form-checkbox-list">
+                    {% for position in newTeamForm.position %}
+                        <label class="form-checkbox-item">
+                            {{ form_widget(position, {
+                                attr: { class: 'form-checkbox-input' }
+                            }) }}
+                            <span class="form-checkbox-label">
+                                {{ position.vars.label }}
+                            </span>
+                        </label>
+                    {% endfor %}
+                </div>
             </div>
         </section>
 

@@ -1,0 +1,37 @@
+<section class="dashboard-card">
+
+    <div class="dashboard-card-header">
+        <h2 class="dashboard-card-title">Prochains entraînements</h2>
+        <a href="{{ path('training_index') }}" class="link-secondary">Voir tous</a>
+    </div>
+    
+    {% for training in nextTrainings %}
+        <article class="card-list">
+            <h3 class="card-list__title">{{ training.name }}</h3>
+            <p class="card-list__description">{{ training.date|date('d/m/Y H:i') }}</p>
+            <p class="card-list__description">{{ training.location }}</p>
+        </article>
+    {% else %}
+        <p>Aucun entraînement prévu.</p>
+    {% endfor %}
+
+</section>
+
+<section class="dashboard-card">
+
+    <div class="dashboard-card-header">
+        <h2 class="dashboard-card-title">Prochains événements</h2>
+        <a href="{{ path('events_index') }}" class="link-secondary">Voir tous</a>
+    </div>
+
+    {% for event in nextEvents %}
+        <article class="card-list">
+            <h3 class="card-list__title">{{ event.name }}</h3>
+            <p class="card-list__description">{{ event.date|date('d/m/Y H:i') }}</p>
+            <p class="card-list__description">{{ event.location }}</p>
+        </article>
+    {% else %}
+        <p>Aucun événement prévu.</p>
+    {% endfor %}
+    
+</section>

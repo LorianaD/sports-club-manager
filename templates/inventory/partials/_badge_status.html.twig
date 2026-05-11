@@ -29,6 +29,6 @@
     {% set statusText = status|default('Non renseigné') %}
 {% endif %}
 
-<div class="badge {{ badgeClass }}">
+<div class="badge badge-wrap {{ badgeClass }}">
     {{ statusText }}
 </div>

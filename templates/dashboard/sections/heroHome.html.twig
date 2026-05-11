@@ -1,9 +1,11 @@
 <section class="section-stats">
     <a href="{{ path("sanction_index") }}" class="card-stats">
-        <span>Sanctions</span>
+        <span class="card-stats_number">{{ sanctionsThisMonth }}</span>
+        <span class="card-stats_text">Sanctions ce mois</span>
     </a>    
 
     <a href="{{ path("attendance_index") }}" class="card-stats">
-        <span>Absences</span>
+        <span class="card-stats_number">{{ attendanceThisMonth }}</span>
+        <span class="card-stats_text">Absences ce mois</span>
     </a>
 </section>

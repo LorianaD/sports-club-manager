@@ -42,4 +42,15 @@ class TrainingSessionRepository extends ServiceEntityRepository
         
         return $qb;
     }
+
+    public function findNextTrainings(int $limit = 2): array
+    {
+        return $this->createQueryBuilder('ts')
+            ->andWhere('ts.date >= :today')
+            ->setParameter('today', new \DateTimeImmutable('today'))
+            ->orderBy('ts.date', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }

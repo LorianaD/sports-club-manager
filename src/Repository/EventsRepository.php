@@ -41,4 +41,15 @@ class EventsRepository extends ServiceEntityRepository
         
         return $qb;
     }
+
+    public function findNextEvents(int $limit = 2): array
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.date >= :today')
+            ->setParameter('today', new \DateTimeImmutable('today'))
+            ->orderBy('e.date', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }

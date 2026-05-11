@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block header %}
     {% include "layout/header/_dashboard_home_header.html.twig" with {
@@ -12,7 +12,7 @@
 {% block body %}
     <main class="dashboard-main">
         {% include "dashboard/sections/heroHome.html.twig" %}
-        {% include "dashboard/sections/trainingHome.html.twig" %}
+        {% include "dashboard/sections/planningHome.html.twig" %}
         {% include "dashboard/sections/playerHome.html.twig" %}
         {% include "dashboard/sections/teamHome.html.twig" %}
     </main>

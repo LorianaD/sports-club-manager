@@ -41,4 +41,25 @@ class SanctionRepository extends ServiceEntityRepository
         
         return $qb;
     }
+
+    public function countByType(string $type): int
+    {
+        return $this->createQueryBuilder('s')
+            ->select('COUNT(s.id)')
+            ->andWhere('s.type = :type')
+            ->setParameter('type', $type)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countThisMonth(): int
+    {
+        return $this->createQueryBuilder('s')
+            ->select('COUNT(s.id)')
+            ->andWhere('s.create_at BETWEEN :start AND :end')
+            ->setParameter('start', new \DateTimeImmutable('first day of this month 00:00:00'))
+            ->setParameter('end', new \DateTimeImmutable('last day of this month 23:59:59'))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }    
 }

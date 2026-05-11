@@ -15,6 +15,10 @@
     white-space: nowrap;
 }
 
+.badge-wrap {
+    white-space: wrap;
+}
+
 .badge-red {
     background: var(--sb-red-light);
     color: var(--sb-red-dark);
