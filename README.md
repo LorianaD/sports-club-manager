@@ -37,7 +37,6 @@ Projet basé sur un besoin réel d’un coach de football :
 ![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql)
 ![Doctrine](https://img.shields.io/badge/Doctrine-ORM-FC6A31)
 ![Twig](https://img.shields.io/badge/Twig-Template-339933)
-![Docker](https://img.shields.io/badge/Docker-Optional-2496ED?logo=docker)
 
 ---
 
