@@ -214,7 +214,6 @@ symfony console make:form
 
 * [x] Cahier des charges
 * [x] MCD
-* [x] MLD
 * [x] Entités Symfony
 * [x] Player / Contact
 * [x] Gestion absences
